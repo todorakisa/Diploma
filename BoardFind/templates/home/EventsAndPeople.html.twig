@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http:thymeleaf.org">
+
+<head>
+    <title>Events & People</title>
+    <meta charset="UTF-8">
+
+    {% block stylesheets %}
+        <link rel="stylesheet" src="/build/app.css">
+        {{ encore_entry_link_tags('app') }}
+
+    {% endblock %}
+    <link rel="stylesheet" type="text/css" href="/build/app.css">
+</head>
+
+<body id="eventspeoplebody">
+<ul>
+    <li><a href="/">Home</a></li>
+    <li><a class="active" href="/user/eventsAndPeople">Events & People</a></li>
+    <li><a href="./Trade.html">Trade</a></li>
+    <li><a href="/user/wiki">Wiki</a></li>
+    <li><a href="#account">Account</a></li>
+    <li><a href="/user/aboutUs">About us</a></li>
+    <li style="float:right">
+        <a href="/logout">Sign out</a>
+    </li>
+</ul>
+
+<br>
+<p>
+    <img class="logo" src="/resources/images/logo.png" width="400" height="175">
+    <span class="heading"> &nbsp Choose your game & find a team! </span>
+</p>
+
+<br>
+<div align="center" >
+    <input class="input1" type="text" name="search" placeholder="Search Event">
+</div>
+
+<br>
+<div align="center">
+    <div id="map"style="width:1200px;height:800px;background:purple"></div>
+    <script th:inline="javascript">
+        function initMap() {
+            var center = {lat: 42.662369, lng: 23.373397};
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 15,
+                center: center
+            });
+            var marker = new google.maps.Marker({
+                position: center,
+                map: map
+            });
+        }
+        /*<![CDATA[*/
+        var arrayLatitude;
+        var arrayLongitude;
+        var lats = [[${latitudes}]];
+        var longs = [[${longitudes}]];
+        for (i = 0; i < lats.length; i++) {
+            marker = new google.maps.Marker({
+                position: new google.maps.LatLng(lats[i], longs[i]),
+                map: map
+            });
+            /*]]>*/
+        }
+    </script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8SYKd91aaFo6L3B-sq4tbSHa-wHzuByE&callback=initMap">
+    </script>
+</div>
+
+<br>
+<div class="transbox">
+    <p align="center" class ="specialText">
+        <span class="blue"> INFO </span>
+    </p>
+    <p id="info" class ="specialText">
+        <span class="blue"> Event name: </span> My first event
+        <br>
+        <span class="blue"> Games at the event: </span> Seven Wonders
+        <br>
+        <span class="blue"> Date: </span> 14.03.2018
+        <br>
+        <span class="blue"> Place: </span> Mazeto na Tosho
+        <br>
+        <span class="blue"> Players: </span> todor.domitrov2000@gmail.com, cenkocakov@gmail.com
+</div>
+</p>
+<br>
+<p align="center" class ="specialText"> <a th:href="@{/user/eventsAndPeople/registerEvent}"><button class="create button1"><b>Create an Event</b></button></a>
+    OR <a th:href="@{'/user/seeAll/events/'}" class ="specialText" ><button  button class="create button1">See All Events</button></a>
+</p>
+
+<br><br>
+<div id="footer">
+    <br>
+    <div align="center">
+        <a href="https://www.facebook.com/The-BoardFinders-1834097936893854/" target="_blank"><img src="/resources/images/1.png" width ="90" height ="90"></a> &nbsp
+        <a href="https://twitter.com/Todorakisa" target="_blank"><img src="/resources/images/2.png" width ="90" height ="90"></a> &nbsp
+        <a href="https://plus.google.com" target="_blank"><img src="/resources/images/3.png" width ="90" height ="90"></a> &nbsp
+        <a href="https://www.instagram.com/todor.domitrov2000/" target="_blank"><img src="/resources/images/4.png" width ="90" height ="90"></a> &nbsp
+        <br><br>
+        <a href="#Advertising" style="text-decoration: none" target="_blank"><b>Advertising</b></a>&nbsp
+        |&nbsp <a href="#Terms" style="text-decoration: none" target="_blank"><b>Terms and Conditions</b></a>&nbsp
+        |&nbsp <a href="#FAQ" style="text-decoration: none" target="_blank"><b>FAQ</b></a>&nbsp
+        |&nbsp <a href="#Contact" style="text-decoration: none" target="_blank"><b>Contact us</b></a></font>
+        <br><br>
+        <span id="copy">Copyright © 2018 Board Game inc.™</span>
+        <br><br>
+    </div>
+</div>
+
+</body>
+</html>
