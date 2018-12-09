@@ -5,12 +5,14 @@
     <title>Events & People</title>
     <meta charset="UTF-8">
 
-    {% block stylesheets %}
-        <link rel="stylesheet" src="/build/app.css">
-        {{ encore_entry_link_tags('app') }}
 
+    {% block stylesheets %}
+    {#{% stylesheets '@AppBundle/public/build/app.css' %}#}
+        {{ encore_entry_link_tags('app') }}
+        <link rel="stylesheet" src="/build/app.css"/>
+
+    {#{% endstylesheets %}#}
     {% endblock %}
-    <link rel="stylesheet" type="text/css" href="/build/app.css">
 </head>
 
 <body id="eventspeoplebody">
@@ -22,7 +24,7 @@
     <li><a href="#account">Account</a></li>
     <li><a href="/user/aboutUs">About us</a></li>
     <li style="float:right">
-        <a href="/logout">Sign out</a>
+        <a href="/EventsAndPeople/Register">Sign out</a>
     </li>
 </ul>
 
