@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use App\Form\UserType;
 
 class UserController extends AbstractController
 {
@@ -37,7 +38,7 @@ class UserController extends AbstractController
     /**
      * @Route("/EventsAndPeople/Register", name="Register")
      */
-    public function news(Request $request)
+    public function register(Request $request)
     {
         // creates a task and gives it some dummy data for this example
         $user = new User();
@@ -45,12 +46,14 @@ class UserController extends AbstractController
 //        $user->setPassword('zdr');
 //        $user->setEmail('tomorrow');
 
-        $form = $this->createFormBuilder($user)
-            ->add('username', TextType::class)
-            ->add('email', TextType::class)
-            ->add('password', TextType::class)
-            ->add('save', SubmitType::class, array('label' => 'Create User'))
-            ->getForm();
+//        $form = $this->createFormBuilder($user)
+//            ->add('username', TextType::class)
+//            ->add('email', TextType::class)
+//            ->add('password', TextType::class)
+//            ->add('save', SubmitType::class, array('label' => 'Create User'))
+//            ->getForm();
+
+        $form = $this->createForm(UserType::class, $user);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
