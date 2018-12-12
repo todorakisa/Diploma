@@ -28,17 +28,6 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class HomeController extends AbstractController
 {
-     /**
-      * @Route("/lucky/number")
-      */
-    public function number()
-    {
-        $number = random_int(0, 100);
-
-        return $this->render('Home/number.html.twig', [
-            'number' => $number,
-        ]);
-    }
 
     /**
      * @Route("/EventsAndPeople")
