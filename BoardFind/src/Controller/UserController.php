@@ -13,46 +13,14 @@ use App\Form\UserType;
 
 class UserController extends AbstractController
 {
-//    /**
-//     * @Route("/EventsAndPeople/Register", name="Register")
-//     */
-//    public function index()
-//    {
-//        // you can fetch the EntityManager via $this->getDoctrine()
-//        // or you can add an argument to your action: index(EntityManagerInterface $entityManager)
-//        $entityManager = $this->getDoctrine()->getManager();
-//
-//        $user = new User();
-//        $user->setUsername('TheFirstUser');
-//        $user->setPassword('ThePassword');
-//
-//        // tell Doctrine you want to (eventually) save the Product (no queries yet)
-//        $entityManager->persist($user);
-//
-//        // actually executes the queries (i.e. the INSERT query)
-//        $entityManager->flush();
-//
-//        return new Response('Saved new product with id '.$user->getId());
-//        return $this->render('home/RegisterForm.html.twig');
-//    }
     /**
      * @Route("/EventsAndPeople/Register", name="Register")
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
-    public function register(Request $request)
+    public function Register(Request $request)
     {
-        // creates a task and gives it some dummy data for this example
         $user = new User();
-//        $user->setUsername('Write a blog post');
-//        $user->setPassword('zdr');
-//        $user->setEmail('tomorrow');
-
-//        $form = $this->createFormBuilder($user)
-//            ->add('username', TextType::class)
-//            ->add('email', TextType::class)
-//            ->add('password', TextType::class)
-//            ->add('save', SubmitType::class, array('label' => 'Create User'))
-//            ->getForm();
-
         $form = $this->createForm(UserType::class, $user);
 
         $form->handleRequest($request);
@@ -73,5 +41,25 @@ class UserController extends AbstractController
     public function newss()
     {
         return $this->render('home/Succes.html.twig');
+    }
+    /**
+     * @Route("/EventsAndPeople/Login", name="Login")
+     */
+    public function login(Request $request)
+    {
+        $user = new User();
+        $form = $this->createForm(UserType::class, $user);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $user = $form->getData();
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($user);
+            $entityManager->flush();
+            return $this->redirectToRoute('task_success');
+        }
+        return $this->render('home/LoginForm.html.twig', array(
+            'form' => $form->createView(),
+        ));
     }
 }
