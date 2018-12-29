@@ -25,6 +25,7 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 class HomeController extends AbstractController
 {
@@ -34,6 +35,7 @@ class HomeController extends AbstractController
      */
     public function EventsAndPeople()
     {
+        $session = new Session();
         return $this->render('Home/EventsAndPeople.html.twig');
     }
     /**

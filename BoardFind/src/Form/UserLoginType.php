@@ -13,6 +13,7 @@ class UserLoginType extends AbstractType
         $builder
             ->add('username', TextType::class)
             ->add('password', TextType::class)
+            ->add('email', TextType::class)
             ->add('save', SubmitType::class, array('label' => 'Create User'))
         ;
     }
