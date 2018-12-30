@@ -34,6 +34,7 @@ class UserController extends AbstractController
             'form' => $form->createView(),
         ));
     }
+
     /**
      * @Route("/EventsAndPeople/task_success", name="task_success")
      */
@@ -41,6 +42,16 @@ class UserController extends AbstractController
     {
         return $this->render('home/Succes.html.twig');
     }
+
+    /**
+     * @Route("/EventsAndPeople/Logout", name="Logout")
+     */
+    public function logout()
+    {
+        $this->get('session')->clear();
+        return $this->render('home/Succes.html.twig');
+    }
+
     /**
      * @Route("/EventsAndPeople/Login", name="Login")
      */
@@ -60,8 +71,7 @@ class UserController extends AbstractController
                     'No product found for this email and password '
                 );
             }
-            $session = new Session();
-            $session->set('user', $user);
+            $this->get('session')->set('user', $user);
             return $this->redirectToRoute('task_success');
         }
         return $this->render('home/LoginForm.html.twig', array(

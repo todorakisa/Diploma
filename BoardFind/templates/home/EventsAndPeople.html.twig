@@ -9,7 +9,7 @@
     {% block stylesheets %}
     {#{% stylesheets '@AppBundle/public/build/app.css' %}#}
         {{ encore_entry_link_tags('app') }}
-        <link rel="stylesheet" src="/build/app.css"/>
+        <link src="{{ asset('/build/app.css') }}" rel="stylesheet"/>
 
     {#{% endstylesheets %}#}
     {% endblock %}
@@ -24,11 +24,14 @@
     <li><a href="#account">Account</a></li>
     <li><a href="/user/aboutUs">About us</a></li>
     <li style="float:right">
+        {% if app.session.has('user') == false %}
+            <a href="/EventsAndPeople/Register">Register</a>
+            <a href="/EventsAndPeople/Login">login</a>
+        {% else %}
+        <p> Hello, {{app.session.get('user').getUsername}} </p>
+        <a href="/EventsAndPeople/Logout">logout</a>
+        {% endif %}
 
-        <a href="/EventsAndPeople/Register">Register</a>
-
-        <a href="/EventsAndPeople/Login">login</a>
-        
     </li>
 </ul>
 

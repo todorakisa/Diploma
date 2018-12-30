@@ -5,6 +5,7 @@
     <title>Title</title>
 </head>
 <body>
-<h1>Succes</h1>
+<h1>Succes {% if app.session.has('user') %}{{app.session.get('user').getUsername}}{% endif %}</h1>
+<a href="/EventsAndPeople/">Back to the site</a>
 </body>
 </html>
