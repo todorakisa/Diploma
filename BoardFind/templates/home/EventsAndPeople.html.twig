@@ -5,13 +5,9 @@
     <title>Events & People</title>
     <meta charset="UTF-8">
 
-
     {% block stylesheets %}
-    {#{% stylesheets '@AppBundle/public/build/app.css' %}#}
         {{ encore_entry_link_tags('app') }}
-        <link src="{{ asset('/build/app.css') }}" rel="stylesheet"/>
-
-    {#{% endstylesheets %}#}
+        <link href="{{ asset('build/app.css') }}" type="text/css" rel="stylesheet"/>
     {% endblock %}
 </head>
 

@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Test Application{% endblock %}</title>
-    {% block stylesheets %}{% endblock %}
+    {% block stylesheets %} {{ encore_entry_link_tags('app') }}
+        <link rel="stylesheet" href="/build/app.css">{% endblock %}
 </head>
 <body>
 <div id="sidebar">
@@ -18,7 +19,6 @@
 <div id="content">
     {% block body %}{% endblock %}
 </div>
-{% block body %}{% endblock %}
 {% block javascripts %}{% endblock %}
 </body>
 </html>
