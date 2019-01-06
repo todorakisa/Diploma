@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 use App\Form\UserType;
 use App\Form\UserLoginType;
 use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class UserController extends AbstractController
 {
@@ -17,7 +18,7 @@ class UserController extends AbstractController
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
-    public function Register(Request $request)
+    public function register(Request $request)
     {
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
@@ -28,7 +29,7 @@ class UserController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
-            return $this->redirectToRoute('task_success');
+            return $this->redirectToRoute('succsessRegister');
         }
         return $this->render('home/RegisterForm.html.twig', array(
             'form' => $form->createView(),
@@ -36,11 +37,19 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/EventsAndPeople/task_success", name="task_success")
+     * @Route("/EventsAndPeople/succsessLogin", name="succsessLogin")
      */
-    public function succsess()
+    public function loginPage()
     {
-        return $this->render('home/Succes.html.twig');
+        return $this->render('home/SuccessfullLogin.html.twig');
+    }
+
+    /**
+     * @Route("/EventsAndPeople/succsessRegister", name="succsessRegister")
+     */
+    public function successfullRegisterPage()
+    {
+        return $this->render('home/SuccessfullRegistered.html.twig');
     }
 
     /**
@@ -49,7 +58,7 @@ class UserController extends AbstractController
     public function logout()
     {
         $this->get('session')->clear();
-        return $this->render('home/Succes.html.twig');
+        return $this->render('home/SuccessfullLogout.html.twig');
     }
 
     /**
@@ -72,7 +81,7 @@ class UserController extends AbstractController
                 );
             }
             $this->get('session')->set('user', $user);
-            return $this->redirectToRoute('task_success');
+            return $this->redirectToRoute('succsessLogin');
         }
         return $this->render('home/LoginForm.html.twig', array(
             'form' => $form->createView(),

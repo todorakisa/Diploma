@@ -2,12 +2,14 @@
 <html lang="en" xmlns:th="http:thymeleaf.org">
 
 <head>
+    <style type="text/css">
+    </style>
     <title>Events & People</title>
     <meta charset="UTF-8">
-
     {% block stylesheets %}
         {{ encore_entry_link_tags('app') }}
         <link href="{{ asset('build/app.css') }}" type="text/css" rel="stylesheet"/>
+        <link rel="stylesheet" href="/build/app.css">
     {% endblock %}
 </head>
 
@@ -45,7 +47,7 @@
 <br>
 <div align="center">
     <div id="map"style="width:1200px;height:800px;background:purple"></div>
-    <script th:inline="javascript">
+    <script>
         function initMap() {
             var center = {lat: 42.662369, lng: 23.373397};
             var map = new google.maps.Map(document.getElementById('map'), {
