@@ -15,63 +15,63 @@
 
 <body id="eventspeoplebody">
 <ul>
+    <li style="float:left"> <img src="{{ asset('build/images/logo.png') }}" width="124" height="54" style="vertical-align: middle"> </li>
     <li><a href="/">Home</a></li>
     <li><a class="active" href="/user/eventsAndPeople">Events & People</a></li>
     <li><a href="./Trade.html">Trade</a></li>
     <li><a href="/user/wiki">Wiki</a></li>
     <li><a href="#account">Account</a></li>
     <li><a href="/user/aboutUs">About us</a></li>
-    <li style="float:right">
-        {% if app.session.has('user') == false %}
-            <a href="/EventsAndPeople/Register">Register</a>
-            <a href="/EventsAndPeople/Login">login</a>
-        {% else %}
-        <p> Hello, {{app.session.get('user').getUsername}} </p>
-        <a href="/EventsAndPeople/Logout">logout</a>
-        {% endif %}
-
-    </li>
+    {% if app.session.has('user') == false %}
+        <li style="float:right"><a href="/EventsAndPeople/Register">Register</a></li>
+        <li style="float:right"><a href="/EventsAndPeople/Login">login</a></li>
+    {% else %}
+        <li style="float:right"><a href="/EventsAndPeople/Logout">logout</a></li>
+        <li style="float:right"><a style="pointer-events: none; cursor: default;">Hello, {{app.session.get('user').getUsername}}</a></li>
+    {% endif %}
 </ul>
 
 <br>
-<p>
-    <img class="logo" src="/resources/images/logo.png" width="400" height="175">
-    <span class="heading"> &nbsp Choose your game & find a team! </span>
-</p>
-
+<div>
+    <p align="center">
+        <span class="heading"> Choose your game & find a team! </span>
+    </p>
+</div>
 <br>
-<div align="center" >
+
+
+<div align="center" id="space">
     <input class="input1" type="text" name="search" placeholder="Search Event">
 </div>
 
 <br>
 <div align="center">
     <div id="map"style="width:1200px;height:800px;background:purple"></div>
-    <script>
-        function initMap() {
-            var center = {lat: 42.662369, lng: 23.373397};
-            var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 15,
-                center: center
-            });
-            var marker = new google.maps.Marker({
-                position: center,
-                map: map
-            });
-        }
-        /*<![CDATA[*/
-        var arrayLatitude;
-        var arrayLongitude;
-        var lats = [[${latitudes}]];
-        var longs = [[${longitudes}]];
-        for (i = 0; i < lats.length; i++) {
-            marker = new google.maps.Marker({
-                position: new google.maps.LatLng(lats[i], longs[i]),
-                map: map
-            });
-            /*]]>*/
-        }
-    </script>
+    {#<script>#}
+        {#function initMap() {#}
+            {#var center = {lat: 42.662369, lng: 23.373397};#}
+            {#var map = new google.maps.Map(document.getElementById('map'), {#}
+                {#zoom: 15,#}
+                {#center: center#}
+            {#});#}
+            {#var marker = new google.maps.Marker({#}
+                {#position: center,#}
+                {#map: map#}
+            {#});#}
+        {#}#}
+        {#/*<![CDATA[*/#}
+        {#var arrayLatitude;#}
+        {#var arrayLongitude;#}
+        {#var lats = [[${latitudes}]];#}
+        {#var longs = [[${longitudes}]];#}
+        {#for (i = 0; i < lats.length; i++) {#}
+            {#marker = new google.maps.Marker({#}
+                {#position: new google.maps.LatLng(lats[i], longs[i]),#}
+                {#map: map#}
+            {#});#}
+            {#/*]]>*/#}
+        {#}#}
+    {#</script>#}
     <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8SYKd91aaFo6L3B-sq4tbSHa-wHzuByE&callback=initMap">
     </script>
@@ -95,8 +95,10 @@
 </div>
 </p>
 <br>
-<p align="center" class ="specialText"> <a th:href="@{/user/eventsAndPeople/registerEvent}"><button class="create button1"><b>Create an Event</b></button></a>
-    OR <a th:href="@{'/user/seeAll/events/'}" class ="specialText" ><button  button class="create button1">See All Events</button></a>
+<p align="center" class ="specialText">
+    <a th:href="@{/user/eventsAndPeople/registerEvent}"><button class="create button1"><b>Create an Event</b></button></a>
+    OR
+    <a th:href="@{'/user/seeAll/events/'}" class ="specialText" ><button  button class="create button1"><b>See All Events</b></button></a>
 </p>
 
 <br><br>

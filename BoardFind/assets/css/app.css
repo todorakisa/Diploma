@@ -6,8 +6,8 @@
 #eventspeoplebody
 {
     background: url(../images/wall.png), url(../images/wallpaper2.jpg);
-    background-repeat: no-repeat, repeat;
-    background-position: 0px 72px, 0px 300px;
+    background-repeat: repeat-x, repeat;
+    background-position: 0px 20px, 0px 300px;
     background-color: #0c0c0c;
 }
 
@@ -16,6 +16,11 @@
     background-color: #0c0c0c;
     margin-left: -0.6%;
     margin-right: -0.6%;
+}
+
+#space
+{
+    margin-top: 5%;
 }
 
 #copy
@@ -174,7 +179,7 @@ li a
 {
     display: block;
     color: white;
-    font-size: 30px;
+    font-size: 17px;
     font-family: "Segoe UI", Frutiger;
     text-align: center;
     padding: 16px 30px;
@@ -200,7 +205,7 @@ li a:hover:not(.active)
 {
     font-weight: bold;
     font-family: "Courier New", Lucida Console;
-    font-size: 45px;
+    font-size: 40px;
     color: #7941ad;
 }
 
