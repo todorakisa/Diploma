@@ -14,22 +14,23 @@
 </head>
 
 <body id="eventspeoplebody">
-<ul>
-    <li style="float:left"> <img src="{{ asset('build/images/logo.png') }}" width="124" height="54" style="vertical-align: middle"> </li>
-    <li><a href="/">Home</a></li>
-    <li><a class="active" href="/user/eventsAndPeople">Events & People</a></li>
-    <li><a href="./Trade.html">Trade</a></li>
-    <li><a href="/user/wiki">Wiki</a></li>
-    <li><a href="#account">Account</a></li>
-    <li><a href="/user/aboutUs">About us</a></li>
+<div class="topnav" id="myTopnav">
+    <a style="pointer-events: none; cursor: default;" id = "exception"> <img src="{{ asset('build/images/logo.png') }}" width="108" height="46" style="vertical-align: middle"> </a>
+    <a class="active" href="./BordFinder.html">Home</a>
+    <a href="./Events&People.html">Events & People</a>
+    <a href="./Trade.html">Trade</a>
+    <a href="#chat">Chat</a>
+    <a href="#account">Account</a>
+    <a href="./About.html">About us</a>
     {% if app.session.has('user') == false %}
-        <li style="float:right"><a href="/EventsAndPeople/Register">Register</a></li>
-        <li style="float:right"><a href="/EventsAndPeople/Login">login</a></li>
+        <a style="float:right" href="/EventsAndPeople/Register">Register</a>
+        <a style="float:right" href="/EventsAndPeople/Login">Login</a>
     {% else %}
-        <li style="float:right"><a href="/EventsAndPeople/Logout">logout</a></li>
-        <li style="float:right"><a style="pointer-events: none; cursor: default;">Hello, {{app.session.get('user').getUsername}}</a></li>
+        <a style="float:right" href="/EventsAndPeople/Logout">Logout</a>
+        <a style="float:right;pointer-events: none; cursor: default;" style="pointer-events: none; cursor: default;">Hello, {{app.session.get('user').getUsername}}</a>
     {% endif %}
-</ul>
+    <a href="javascript:void(0);" class="icon" onclick="myFunction()"><i class="bars"></i></a>
+</div>
 
 <br>
 <div>
@@ -45,8 +46,8 @@
 </div>
 
 <br>
-<div align="center">
-    <div id="map"style="width:1200px;height:800px;background:purple"></div>
+{#<div align="center">#}
+    {#<div id="map"style="width:1200px;height:800px;background:purple"></div>#}
     {#<script>#}
         {#function initMap() {#}
             {#var center = {lat: 42.662369, lng: 23.373397};#}
@@ -72,10 +73,10 @@
             {#/*]]>*/#}
         {#}#}
     {#</script>#}
-    <script async defer
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8SYKd91aaFo6L3B-sq4tbSHa-wHzuByE&callback=initMap">
-    </script>
-</div>
+    {#<script async defer#}
+            {#src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8SYKd91aaFo6L3B-sq4tbSHa-wHzuByE&callback=initMap">#}
+    {#</script>#}
+{#</div>#}
 
 <br>
 <div class="transbox">
@@ -121,4 +122,14 @@
 </div>
 
 </body>
+<script>
+    function myFunction() {
+        var x = document.getElementById("myTopnav");
+        if (x.className === "topnav") {
+            x.className += " responsive";
+        } else {
+            x.className = "topnav";
+        }
+    }
+</script>
 </html>
