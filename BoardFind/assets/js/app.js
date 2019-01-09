@@ -10,3 +10,9 @@ require('../css/app.css');
 // Need jQuery? Install it with "yarn add jquery", then uncomment to require it.
 // var $ = require('jquery');
 require('../images/logo.png');
+require('../images/1.png');
+require('../images/2.png');
+require('../images/3.png');
+require('../images/4.png');
+require('../images/Tosho.png');
+require('../images/Pepo.png');

@@ -35,7 +35,6 @@ class HomeController extends AbstractController
      */
     public function EventsAndPeople()
     {
-        $session = new Session();
         return $this->render('Home/EventsAndPeople.html.twig');
     }
     /**
@@ -44,5 +43,12 @@ class HomeController extends AbstractController
     public function Redirecting()
     {
         return $this->redirectToRoute('EventsAndPeople');
+    }
+    /**
+     * @Route("/EventsAndPeople/Home", name="Home")
+     */
+    public function HomePage()
+    {
+        return $this->render('Home/Home.html.twig');
     }
 }

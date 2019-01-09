@@ -18,6 +18,17 @@
     margin-right: -0.6%;
 }
 
+#more
+{
+    font-size: 2.5vw;
+}
+
+#soc
+{
+    width: 6.7%;
+    height: auto;
+}
+
 #space
 {
     margin-top: 5%;
@@ -27,6 +38,7 @@
 {
     color: #7941ad;
     font-weight: bold;
+    font-size: 2.3vw;
 }
 
 #aboutus
@@ -125,6 +137,8 @@
 .profile
 {
     vertical-align: middle;
+    width: 10%;
+    height: auto;
 }
 
 .transbox2
@@ -160,7 +174,7 @@
 .transbox3 p
 {
     margin: 1%;
-    font-size: 40px;
+    font-size: 2.95vw;
     font-family: Rockwell;
     font-weight: bolder;
     color: white;
@@ -191,12 +205,6 @@
 {
     background-color: #ddd;
     color: black;
-}
-
-.active
-{
-    background-color: #4CAF50;
-    color: white;
 }
 
 .topnav .icon
@@ -252,7 +260,7 @@
 {
     font-weight: bold;
     font-family: "Courier New", Lucida Console;
-    font-size: 40px;
+    font-size: 3.3vw;
     color: #7941ad;
 }
 
@@ -270,11 +278,11 @@
 
 .create {
     color: white;
-    padding: 16px 32px;
+    padding: 1.3vw 2.5vw;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 40px;
+    font-size: 2.95vw;
     font-family: Rockwell;
     margin: 4px 2px;
     -webkit-transition-duration: 0.4s;
@@ -286,11 +294,11 @@
     background-color: #b757c1;
     color: black;
     border: 2px solid #b757c1;
-    border-radius: 15px;
+    border-radius: 1.5vw;
 }
 
 .button1:hover {
     background-color: black;
     color: #b757c1;
-    border-radius: 15px;
+    border-radius: 1.5vw;
 }

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http:thymeleaf.org">
+
+<head>
+    <style type="text/css">
+    </style>
+    <title>Events & People</title>
+    <meta charset="UTF-8">
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+        <link href="{{ asset('build/app.css') }}" type="text/css" rel="stylesheet"/>
+        <link rel="stylesheet" href="/build/app.css">
+    {% endblock %}
+</head>
+
+<body id="eventspeoplebody">
+<div class="topnav" id="myTopnav">
+    <a style="pointer-events: none; cursor: default;" id = "exception"> <img src="{{ asset('build/images/logo.png') }}" width="108" height="46" style="vertical-align: middle"> </a>
+    <a class="active" href="/EventsAndPeople/Home">Home</a>
+    <a href="/EventsAndPeople">Events & People</a>
+    <a href="./Trade.html">Trade</a>
+    <a href="#chat">Chat</a>
+    <a href="#account">Account</a>
+    <a href="./About.html">About us</a>
+    {% if app.session.has('user') == false %}
+        <a style="float:right" href="/EventsAndPeople/Register">Register</a>
+        <a style="float:right" href="/EventsAndPeople/Login">Login</a>
+    {% else %}
+        <a style="float:right" href="/EventsAndPeople/Logout">Logout</a>
+        <a style="float:right;pointer-events: none; cursor: default;" style="pointer-events: none; cursor: default;">Hello, {{app.session.get('user').getUsername}}</a>
+    {% endif %}
+    <a href="javascript:void(0);" class="icon" onclick="myFunction()"><i class="bars"></i></a>
+</div>
+
+<br>
+<div>
+    <p align="center">
+        <span class="heading"> Choose your game & find a team! </span>
+    </p>
+</div>
+<br>
+
+<div class="transbox3">
+    <p align="center">
+        <span class="blue"> Soon events near you </span>
+    </p>
+    <p class="trade">
+        <img class="profile" src="{{ asset('build/images/Tosho.png') }}" width="100" height="100"> Събиране с приятели| Mysterium, Catan
+        <button class="create button1"><b>See event</b></button>
+        <br>
+        <img class="profile" src="{{ asset('build/images/Pepo.png') }}" width="100" height="100"> Лудо пиене и игране | Chess, Poker
+        <button id="buy" class="create button1"><b>See event</b></button>
+</div>
+</p>
+
+<br>
+<div class="transbox3">
+    <p align="center">
+        <span class="blue"> NEWS </span>
+    </p>
+    <p class="trade">
+        <img class="profile" src="{{ asset('build/images/Tosho.png') }}" width="100" height="100"> Todor Dimitrov | Bought a Game
+        <button class="create button1"><b>See event</b></button>
+        <br>
+        <img class="profile" src="{{ asset('build/images/Pepo.png') }}" width="100" height="100"> Pepo Bozhinov | Created an event
+        <button id="buy" class="create button1"><b>See event</b></button>
+</div>
+</p>
+
+<br><br>
+
+<div id="footer">
+    <br>
+    <div align="center">
+        <a href="https://www.facebook.com/The-BoardFinders-1834097936893854/" target="_blank"><img id="soc" src="{{ asset('build/images/1.png') }}" width ="90" height ="90"></a> &nbsp
+        <a href="https://twitter.com/Todorakisa" target="_blank"><img id="soc" src="{{ asset('build/images/2.png') }}" width ="90" height ="90"></a> &nbsp
+        <a href="https://plus.google.com" target="_blank"><img id="soc" src="{{ asset('build/images/3.png') }}" width ="90" height ="90"></a> &nbsp
+        <a href="https://www.instagram.com/todor.domitrov2000/" target="_blank"><img id="soc" src="{{ asset('build/images/4.png') }}" width ="90" height ="90"></a> &nbsp
+        <br><br>
+        <span id = "more">
+            <a href="#Advertising" style="text-decoration: none" target="_blank"><font color="white"><b>Advertising</a></b>&nbsp
+            |&nbsp <a href="#Terms" style="text-decoration: none" target="_blank"><font color="white"><b>Terms and Conditions</a></b>&nbsp
+            |&nbsp <a href="#FAQ" style="text-decoration: none" target="_blank"><font color="white"><b>FAQ</a></b>&nbsp
+            |&nbsp <a href="#Contact" style="text-decoration: none" target="_blank"><font color="white"><b>Contact us</a></b></font>
+        </span>
+        <br><br>
+        <span id="copy">Copyright © 2018 Board Game inc.™</span>
+        <br><br>
+    </div>
+</div>
+
+</body>
+<script>
+    function myFunction() {
+        var x = document.getElementById("myTopnav");
+        if (x.className === "topnav") {
+            x.className += " responsive";
+        } else {
+            x.className = "topnav";
+        }
+    }
+</script>
+</html>
