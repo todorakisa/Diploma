@@ -1,24 +1,86 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}Test Application{% endblock %}</title>
-    {% block stylesheets %} {{ encore_entry_link_tags('app') }}
-        <link rel="stylesheet" href="/build/app.css">{% endblock %}
-</head>
-<body>
-<div id="sidebar">
-    {% block sidebar %}
-        <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/blog">Blog</a></li>
-        </ul>
+    <title>{% block title %}{% endblock %}</title>
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+        <link href="{{ asset('build/app.css') }}" type="text/css" rel="stylesheet"/>
+        <link rel="stylesheet" href="/build/app.css">
     {% endblock %}
-</div>
+</head>
 
-<div id="content">
-    {% block body %}{% endblock %}
-</div>
-{% block javascripts %}{% endblock %}
+<body id="eventspeoplebody">
+
+    <div class="topnav" id="myTopnav">
+        {% block sidebar %}
+        <a style="pointer-events: none; cursor: default;" id = "exception"> <img src="{{ asset('build/images/logo.png') }}" width="108" height="46" style="vertical-align: middle"> </a>
+        <a href="/EventsAndPeople/Home">Home</a>
+        <a class="active" href="/EventsAndPeople">Events & People</a>
+        <a href="./Trade.html">Trade</a>
+        <a href="#chat">Chat</a>
+        <a href="#account">Account</a>
+        <a href="./About.html">About us</a>
+        {% endblock %}
+        {% if app.session.has('user') == false %}
+            <a style="float:right" href="/EventsAndPeople/Register">Register</a>
+            <a style="float:right" href="/EventsAndPeople/Login">Login</a>
+        {% else %}
+            <a style="float:right" href="/EventsAndPeople/Logout">Logout</a>
+            <a style="float:right;pointer-events: none; cursor: default;" style="pointer-events: none; cursor: default;">Hello, {{app.session.get('user').getUsername}}</a>
+        {% endif %}
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()"><i class="bars"></i></a>
+    </div>
+
+{% block moto %}
+    <br>
+    <div>
+        <p align="center">
+            <span class="heading"> Choose your game & find a team! </span>
+        </p>
+    </div>
+    <br>
+{% endblock %}
+
+{% block pageContent %}
+{% endblock %}
+
+{% block footer %}
+    <div id="footer">
+        <br>
+        <div align="center">
+            <a href="https://www.facebook.com/The-BoardFinders-1834097936893854/" target="_blank"><img id="soc" src="{{ asset('build/images/1.png') }}" width ="90" height ="90"></a> &nbsp
+            <a href="https://twitter.com/Todorakisa" target="_blank"><img id="soc" src="{{ asset('build/images/2.png') }}" width ="90" height ="90"></a> &nbsp
+            <a href="https://plus.google.com" target="_blank"><img id="soc" src="{{ asset('build/images/3.png') }}" width ="90" height ="90"></a> &nbsp
+            <a href="https://www.instagram.com/todor.domitrov2000/" target="_blank"><img id="soc" src="{{ asset('build/images/4.png') }}" width ="90" height ="90"></a> &nbsp
+            <br><br>
+                <span id = "more">
+                <a href="#Advertising" style="text-decoration: none; color:#FFFFFF" target="_blank"><b>Advertising</b></a>&nbsp
+                |&nbsp <a href="#Terms" style="text-decoration: none" target="_blank"><b>Terms and Conditions</b></a>&nbsp
+                |&nbsp <a href="#FAQ" style="text-decoration: none" target="_blank"><b>FAQ</b></a>&nbsp
+                |&nbsp <a href="#Contact" style="text-decoration: none" target="_blank"><b>Contact us</b></a></font>
+                </span>
+            <br><br>
+            <span id="copy">Copyright © 2018 Board Game inc.™</span>
+            <br><br>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        function myFunction() {
+            var x = document.getElementById("myTopnav");
+            if (x.className === "topnav") {
+                x.className += " responsive";
+            } else {
+                x.className = "topnav";
+            }
+        }
+    </script>
+{% endblock %}
+
 </body>
+
 </html>

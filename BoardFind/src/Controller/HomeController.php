@@ -33,21 +33,21 @@ class HomeController extends AbstractController
     /**
      * @Route("/EventsAndPeople", name="EventsAndPeople")
      */
-    public function EventsAndPeople()
+    public function eventsAndPeople()
     {
         return $this->render('Home/EventsAndPeople.html.twig');
     }
     /**
      * @Route("/")
      */
-    public function Redirecting()
+    public function redirecting()
     {
         return $this->redirectToRoute('EventsAndPeople');
     }
     /**
      * @Route("/EventsAndPeople/Home", name="Home")
      */
-    public function HomePage()
+    public function homePage()
     {
         return $this->render('Home/Home.html.twig');
     }
