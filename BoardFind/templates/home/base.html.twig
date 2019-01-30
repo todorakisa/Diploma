@@ -11,7 +11,36 @@
     {% endblock %}
 </head>
 
-<body id="eventspeoplebody">
+<body id="originalbody">
+
+{% block flashmessages %}
+    {% set flashbag = app.session.flashbag.all %}
+    {% if flashbag is not empty %}
+        {% for label, flashes in flashbag %}
+            {% for flash in flashes %}
+                <div id="myModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <p class="alert-success">{{ flash }}</p>
+                    </div>
+                </div>
+                <script>
+                    var modal = document.getElementById('myModal');
+                    var span = document.getElementsByClassName("close")[0];
+                    modal.style.display = "block";
+                    span.onclick = function() {
+                        modal.style.display = "none";
+                    }
+                    window.onclick = function(event) {
+                        if (event.target == modal) {
+                            modal.style.display = "none";
+                        }
+                    }
+                </script>
+            {% endfor %}
+        {% endfor %}
+    {% endif %}
+{% endblock %}
 
     <div class="topnav" id="myTopnav">
         {% block sidebar %}
@@ -21,7 +50,7 @@
         <a href="./Trade.html">Trade</a>
         <a href="#chat">Chat</a>
         <a href="#account">Account</a>
-        <a href="./About.html">About us</a>
+        <a href="/EventsAndPeople/About">About us</a>
         {% endblock %}
         {% if app.session.has('user') == false %}
             <a style="float:right" href="/EventsAndPeople/Register">Register</a>
@@ -34,14 +63,13 @@
     </div>
 
 {% block moto %}
-    <br>
     <div>
         <p align="center">
             <span class="heading"> Choose your game & find a team! </span>
         </p>
     </div>
-    <br>
 {% endblock %}
+<br><br>
 
 {% block pageContent %}
 {% endblock %}

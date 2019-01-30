@@ -29,27 +29,14 @@ class UserController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
-            return $this->redirectToRoute('succsessRegister');
+
+            $flashbag = $this->get('session')->getFlashBag();
+            $flashbag->add("SuccessfullRegister", "You successfully registered in our site!");
+            return $this->redirectToRoute('EventsAndPeople');
         }
         return $this->render('home/RegisterForm.html.twig', array(
             'form' => $form->createView(),
         ));
-    }
-
-    /**
-     * @Route("/EventsAndPeople/succsessLogin", name="succsessLogin")
-     */
-    public function loginPage()
-    {
-        return $this->render('home/SuccessfullLogin.html.twig');
-    }
-
-    /**
-     * @Route("/EventsAndPeople/succsessRegister", name="succsessRegister")
-     */
-    public function successfullRegisterPage()
-    {
-        return $this->render('home/SuccessfullRegistered.html.twig');
     }
 
     /**
@@ -58,7 +45,9 @@ class UserController extends AbstractController
     public function logout()
     {
         $this->get('session')->clear();
-        return $this->render('home/SuccessfullLogout.html.twig');
+        $flashbag = $this->get('session')->getFlashBag();
+        $flashbag->add("SuccessfullLoggout", "You successfully logout from our site!");
+        return $this->redirectToRoute('EventsAndPeople');
     }
 
     /**
@@ -81,7 +70,9 @@ class UserController extends AbstractController
                 );
             }
             $this->get('session')->set('user', $user);
-            return $this->redirectToRoute('succsessLogin');
+            $flashbag = $this->get('session')->getFlashBag();
+            $flashbag->add("SuccessfullLogin", "You successfully logged in our site!");
+            return $this->redirectToRoute('EventsAndPeople');
         }
         return $this->render('home/LoginForm.html.twig', array(
             'form' => $form->createView(),
