@@ -15,19 +15,24 @@
          margin-left="20%";
          margin-right="20%";>
         <p align="center" class ="reg">
-            <span class="regreg"> REGISTER </span>
+            <span class="regreg"> LOGIN </span>
             <br><br>
         </p>
         <div align="center">
-            <div id="info" class ="fields">
+            <div id="info" class ="fill">
                 {{ form_start(form) }}
-                {{ form_widget(form, { 'attr': {'class': 'fill'} }) }}
-                {{ form_end(form)}}
+                {{ form_row(form.username, { 'attr': {'class': 'fill'} }) }}
+                {{ form_row(form.password, { 'attr': {'class': 'fill'} }) }}
+                {{ form_row(form.email, { 'attr': {'class': 'fill'} }) }}
+                {#{{ form_widget(form, { 'attr': {'class': 'fill'} }) }}#}
                 <p class="mustadd" align="center">fields with * must be filled!</p>
             </div>
         </div>
     </div>
     <br>
-    <p align="center"> <button class="create button1"><b>Register</b></button> </p>
+    <div align="center">
+        {{ form_row(form.save) }}
+    </div>
+    {{ form_end(form)}}
     <br><br>
 {% endblock %}
