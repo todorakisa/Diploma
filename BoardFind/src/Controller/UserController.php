@@ -27,9 +27,9 @@ class UserController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $user = $form->getData();
             $entityManager = $this->getDoctrine()->getManager();
+            $user->setPassword(md5($user->getPassword()));
             $entityManager->persist($user);
             $entityManager->flush();
-
             $flashbag = $this->get('session')->getFlashBag();
             $flashbag->add("SuccessfullRegister", "You successfully registered in our site!");
             return $this->redirectToRoute('EventsAndPeople');
@@ -42,7 +42,7 @@ class UserController extends AbstractController
     /**
      * @Route("/EventsAndPeople/Logout", name="Logout")
      */
-    public function logout()
+    public function Logout()
     {
         $this->get('session')->clear();
         $flashbag = $this->get('session')->getFlashBag();
@@ -61,6 +61,7 @@ class UserController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted()) {
               $notTrueUser = $form->getData();
+            $notTrueUser->setPassword(md5($notTrueUser->getPassword()));
             $user = $this->getDoctrine()
                 ->getRepository(User::class)
                 ->findOneByPasswordAndEmailAndUsername($notTrueUser->getPassword(),$notTrueUser->getEmail(),$notTrueUser->getUsername());
