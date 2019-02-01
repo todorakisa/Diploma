@@ -16,3 +16,10 @@ require('../images/3.png');
 require('../images/4.png');
 require('../images/Tosho.png');
 require('../images/Pepo.png');
+require('../images/bars.png');
+
+require('../images/monopoly.jpg');
+require('../images/pen1.png');
+require('../images/pen2.png');
+require('../images/trump.jpg');
+require('../images/87h.jpg');

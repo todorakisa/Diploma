@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use mysql_xdevapi\CollectionFind;
+use function Sodium\add;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
@@ -40,6 +42,19 @@ class User
      * @Assert\Length(max = 4096)
      */
     private $password;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\TradeOffer", mappedBy="usertrade")
+     */
+    private $tradeoffers;
+
+
+    /**
+     * @ORM\Column(type="boolean")
+     * @Assert\NotBlank()
+     * @Assert\Length(max = 4096)
+     */
+    private $isadmin;
 
     public function getId(): ?int
     {
@@ -79,4 +94,28 @@ class User
 
         return $this;
     }
+
+    public function __construct()
+    {
+        $this->tradeoffers = new ArrayCollection();
+    }
+
+    /**
+     * @return Collection|TradeOffer[]
+     */
+    public function getProducts(): Collection
+    {
+        return $this->tradeoffers;
+    }
+
+    public function addProduct(?TradeOffer $offer)
+    {
+        return $this->tradeoffers.$this->addProduct($offer);
+    }
+
+//    public function removeProduct()
+//    {
+//        return $this->tradeoffers;
+//    }
+
 }

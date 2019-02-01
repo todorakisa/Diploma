@@ -5,8 +5,8 @@
     <a class="active" href="/EventsAndPeople/Home">Home</a>
     <a href="/EventsAndPeople">Events & People</a>
     <a href="./Trade.html">Trade</a>
-    <a href="#chat">Chat</a>
-    <a href="#account">Account</a>
+    <a href="/EventsAndPeople/Trade">Chat</a>
+    <a href="/EventsAndPeople/Account">Account</a>
     <a href="/EventsAndPeople/About">About us</a>
 {% endblock %}
 {% block pageContent %}
@@ -19,15 +19,22 @@
             <br><br>
         </p>
         <div align="center">
-            <div id="info" class ="fields">
+            <div id="info" class ="fill">
                 {{ form_start(form) }}
-                {{ form_widget(form, { 'attr': {'class': 'fill'} }) }}
-                {{ form_end(form)}}
+                {{ form_row(form.username, { 'attr': {'class': 'fill'} }) }}
+                <br>
+                {{ form_row(form.password, { 'attr': {'class': 'fill'} }) }}
+                <br>
+                {{ form_row(form.email, { 'attr': {'class': 'fill'} }) }}
+                <br>
                 <p class="mustadd" align="center">fields with * must be filled!</p>
             </div>
         </div>
     </div>
     <br>
-    <p align="center"> <button class="create button1"><b>Register</b></button> </p>
+    <div align="center">
+        {{ form_row(form.save) }}
+    </div>
+    {{  form_end(form)}}
     <br><br>
 {% endblock %}

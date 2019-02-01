@@ -49,4 +49,16 @@ class UserRepository extends ServiceEntityRepository
             ->getOneOrNullResult()
         ;
     }
+
+    public function findOneByPasswordAndUsername($password,$username): ?User
+    {
+        return $this->createQueryBuilder('u')
+            ->andWhere('u.password = :pass')
+            ->setParameter('pass', $password)
+            ->andWhere('u.username = :username')
+            ->setParameter('username', $username)
+            ->getQuery()
+            ->getOneOrNullResult()
+            ;
+    }
 }

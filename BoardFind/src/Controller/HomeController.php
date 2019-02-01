@@ -37,6 +37,7 @@ class HomeController extends AbstractController
     {
         return $this->render('Home/EventsAndPeople.html.twig');
     }
+
     /**
      * @Route("/")
      */
@@ -44,6 +45,7 @@ class HomeController extends AbstractController
     {
         return $this->redirectToRoute('EventsAndPeople');
     }
+
     /**
      * @Route("/EventsAndPeople/Home", name="Home")
      */
@@ -51,11 +53,28 @@ class HomeController extends AbstractController
     {
         return $this->render('Home/Home.html.twig');
     }
+
     /**
      * @Route("/EventsAndPeople/About", name="About")
      */
     public function aboutPage()
     {
         return $this->render('Home/About.html.twig');
+    }
+
+    /**
+     * @Route("/EventsAndPeople/Account", name="Account")
+     */
+    public function accountPage()
+    {
+        return $this->render('Home/Account.html.twig');
+    }
+
+    /**
+     * @Route("/EventsAndPeople/Trade", name="Trade")
+     */
+    public function tradePage()
+    {
+        return $this->render('Home/ListOffers.html.twig');
     }
 }

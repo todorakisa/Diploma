@@ -27,7 +27,8 @@ class UserController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $user = $form->getData();
             $entityManager = $this->getDoctrine()->getManager();
-            $user->setPassword(md5($user->getPassword()));
+            $user->setPassword(hash("sha256",$user->getPassword()));
+//            $user->setPassword(md5($user->getPassword()));
             $entityManager->persist($user);
             $entityManager->flush();
             $flashbag = $this->get('session')->getFlashBag();
@@ -60,11 +61,11 @@ class UserController extends AbstractController
 
         $form->handleRequest($request);
         if ($form->isSubmitted()) {
-              $notTrueUser = $form->getData();
-            $notTrueUser->setPassword(md5($notTrueUser->getPassword()));
+            $notTrueUser = $form->getData();
+            $notTrueUser->setPassword(hash("sha256",$notTrueUser->getPassword()));
             $user = $this->getDoctrine()
                 ->getRepository(User::class)
-                ->findOneByPasswordAndEmailAndUsername($notTrueUser->getPassword(),$notTrueUser->getEmail(),$notTrueUser->getUsername());
+                ->findOneByPasswordAndUsername($notTrueUser->getPassword(),$notTrueUser->getUsername());
             if (!$user) {
                 throw $this->createNotFoundException(
                     'No product found for this email and password '

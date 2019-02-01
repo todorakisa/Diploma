@@ -63,6 +63,10 @@
     padding: 2px 9px;
 }
 
+.in {
+    border-radius: 50%;
+}
+
 .input1 {
     width: 50%;
     box-sizing: border-box;
@@ -201,7 +205,7 @@
 .specialText
 {
     margin: 1%;
-    font-size: 30px;
+    font-size: 2vw;
     font-family: Rockwell;
     font-weight: bolder;
     color: white;
@@ -341,6 +345,183 @@
 .logo
 {
     vertical-align: middle;
+}
+
+.create2 {
+    color: white;
+    padding: 0.74vw 1.2vw;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 2.6vw;
+    font-family: Rockwell;
+    margin: 0.3vw 0.15vw;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.button8 {
+    background-color: black;
+    color: #b757c1;
+    border: 0.2vw solid #b757c1;
+    border-radius: 1.1vw;
+}
+
+.button8:hover {
+    background-color: #b757c1;
+    border: 0.2vw solid black;
+    color: black;
+    border-radius: 1.1vw;
+}
+
+.create3 {
+    color: white;
+    padding: 0.74vw 1.2vw;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 3.2vw;
+    font-family: Calibri;
+    margin: 0.3vw 0.15vw;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.button11 {
+    background-color: white;
+    color: #871f78;
+    border: 0.2vw solid #871f78;
+    border-radius: 0.5vw;
+}
+
+.button11:hover {
+    background-color: #871f78;
+    border: 0.2vw solid white;
+    color: white;
+    border-radius: 0.5vw;
+}
+
+.delete {
+    background-color: white;
+    color: red;
+    border: 0.2vw solid white;
+    border-radius: 0.6vw;
+}
+
+.delete:hover {
+    background-color: red;
+    border: 0.2vw solid red;
+    color: white;
+    border-radius: 0.6vw;
+}
+
+.gameprice {
+    background-color: #4b5ce5;
+    color: black;
+    font-size: 2.6vw;
+    margin: 0.45vw 1.5vw;
+    padding: 0.74vw 1.2vw;
+}
+
+.tradetitle {
+    font-size: 4.4vw;
+    color: #bd8cdb;
+    font-weight: bolder;
+    font-family: Imprint MT Shadow;
+}
+
+.boardpic {
+    vertical-align: middle;
+    max-width: 18vw;
+    max-height: 18vw;
+    border-radius: 10px;
+}
+
+.profileimage {
+    display: inline-block;
+    /*max-width: 26.6vw;*/
+    height: 26.6vw;
+    /*height: auto;*/
+}
+
+.contain {
+    position: relative;
+    max-width: 26.6vw;
+    max-height: 26.6vw;
+    float: left;
+}
+
+.contain:hover .lay {
+    opacity: 0.8;
+}
+
+.contain2 {
+    margin-left: 2vw;
+    position: relative;
+    display: inline-block;
+    font-size: 2.5vw;
+    color: white;
+    font-weight: bold;
+    vertical-align: middle;
+    background-color: #6c1a7c;
+    padding-top: 3vw;
+    padding-bottom: 2.8vw;
+    padding-left: 1.5vw;
+    padding-right: 11vw;
+    font-family: Lucida Bright;
+}
+
+.divide {
+    max-width: 100%;
+}
+
+.lay {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: #c052ce;
+}
+
+.changepic {
+    color: white;
+    font-size: 30px;
+    position: absolute;
+    top: 50%;
+    left: 49%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.pencils {
+    width: 2.95vw;
+    height: 2.95vw;
+    border-radius: 3px;
+    background: url("./pen1.png") no-repeat;
+    background-size: cover;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.pencils:hover {
+    width: 2.95vw;
+    height: 2.95vw;
+    border-radius: 3px;
+    cursor: pointer;
+    background: url("./pen2.png") no-repeat;
+    background-size: cover;
+    vertical-align: middle;
+    display: inline-block;
 }
 
 .heading
