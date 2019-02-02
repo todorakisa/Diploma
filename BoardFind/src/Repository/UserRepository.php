@@ -61,4 +61,14 @@ class UserRepository extends ServiceEntityRepository
             ->getOneOrNullResult()
             ;
     }
+
+    public function findOneById($id): ?User
+    {
+        return $this->createQueryBuilder('u')
+            ->andWhere('u.id = :key')
+            ->setParameter('key', $id)
+            ->getQuery()
+            ->getOneOrNullResult()
+            ;
+    }
 }

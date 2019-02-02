@@ -507,7 +507,7 @@
     width: 2.95vw;
     height: 2.95vw;
     border-radius: 3px;
-    background: url("./pen1.png") no-repeat;
+    background: url(../images/pen1.png) no-repeat;
     background-size: cover;
     vertical-align: middle;
     display: inline-block;
@@ -518,7 +518,7 @@
     height: 2.95vw;
     border-radius: 3px;
     cursor: pointer;
-    background: url("./pen2.png") no-repeat;
+    background: url(../images/pen2.png) no-repeat;
     background-size: cover;
     vertical-align: middle;
     display: inline-block;

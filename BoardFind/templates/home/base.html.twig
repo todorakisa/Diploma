@@ -57,10 +57,11 @@
             <a style="float:right" href="/EventsAndPeople/Login">Login</a>
         {% else %}
             <a style="float:right" href="/EventsAndPeople/Logout">Logout</a>
-            <a style="float:right;pointer-events: none; cursor: default;" style="pointer-events: none; cursor: default;">Hello, {{app.session.get('user').getUsername}}</a>
+            <a style="float:right;pointer-events: none; cursor: default;" style="pointer-events: none; cursor: default;">Hello, {{userIdInformation(app.session.get('user').getId)}}</a>
         {% endif %}
         <a href="javascript:void(0);" class="icon" onclick="myFunction()"><i class="bars"></i></a>
     </div>
+
 
 {% block moto %}
     <div>

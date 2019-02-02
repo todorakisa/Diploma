@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use mysql_xdevapi\CollectionFind;
+use phpDocumentor\Reflection\Types\Boolean;
+use Doctrine\Common\Collections\ArrayCollection;
 use function Sodium\add;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -117,5 +119,15 @@ class User
 //    {
 //        return $this->tradeoffers;
 //    }
+
+    public function getIsadmin(): ?boolean
+    {
+        return $this->isadmin;
+    }
+
+    public function setIsadmin(Boolean $bool)
+    {
+        $this->isadmin = $bool;
+    }
 
 }

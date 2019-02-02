@@ -29,3 +29,11 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+#    twig.extension:
+#        class:  App\Twig\AppExtension
+#        tags:
+#            - { name: twig.extension }
+#        arguments: ['@doctrine.orm.entity_manager']
+#        arguments:
+#               doctrine : '@doctrine'
