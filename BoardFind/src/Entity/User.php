@@ -53,7 +53,6 @@ class User
 
     /**
      * @ORM\Column(type="boolean")
-     * @Assert\NotBlank()
      * @Assert\Length(max = 4096)
      */
     private $isadmin;
@@ -120,12 +119,12 @@ class User
 //        return $this->tradeoffers;
 //    }
 
-    public function getIsadmin(): ?boolean
+    public function getIsadmin(): ?bool
     {
         return $this->isadmin;
     }
 
-    public function setIsadmin(Boolean $bool)
+    public function setIsadmin(bool $bool)
     {
         $this->isadmin = $bool;
     }

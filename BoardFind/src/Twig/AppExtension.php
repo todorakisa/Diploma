@@ -1,18 +1,10 @@
 <?php
 
 namespace App\Twig;
-use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 
 class AppExtension extends \Twig_Extension
 {
-//    protected $doctrine;
-
-//    public function __construct(RegistryInterface $doctrine)
-//    {
-//        $this->doctrine = $doctrine;
-//    }
-    protected $em;
 
     public function __construct(EntityManagerInterface $em)
     {

@@ -14,7 +14,7 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 class UserController extends AbstractController
 {
     /**
-     * @Route("/EventsAndPeople/Register", name="Register")
+     * @Route("/BoardFind/Register", name="Register")
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
@@ -28,12 +28,12 @@ class UserController extends AbstractController
             $user = $form->getData();
             $entityManager = $this->getDoctrine()->getManager();
             $user->setPassword(hash("sha256",$user->getPassword()));
-//            $user->setPassword(md5($user->getPassword()));
+            $user->setIsadmin(false);
             $entityManager->persist($user);
             $entityManager->flush();
             $flashbag = $this->get('session')->getFlashBag();
             $flashbag->add("SuccessfullRegister", "You successfully registered in our site!");
-            return $this->redirectToRoute('EventsAndPeople');
+            return $this->redirectToRoute('BoardFind');
         }
         return $this->render('home/RegisterForm.html.twig', array(
             'form' => $form->createView(),
@@ -41,18 +41,18 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/EventsAndPeople/Logout", name="Logout")
+     * @Route("/BoardFind/Logout", name="Logout")
      */
     public function Logout()
     {
         $this->get('session')->clear();
         $flashbag = $this->get('session')->getFlashBag();
         $flashbag->add("SuccessfullLoggout", "You successfully logout from our site!");
-        return $this->redirectToRoute('EventsAndPeople');
+        return $this->redirectToRoute('BoardFind');
     }
 
     /**
-     * @Route("/EventsAndPeople/Login", name="Login")
+     * @Route("/BoardFind/Login", name="Login")
      */
     public function login(Request $request)
     {
@@ -71,10 +71,10 @@ class UserController extends AbstractController
                     'No product found for this email and password '
                 );
             }
-            $this->get('session')->set('user', $user);
+            $this->get('session')->set('id', $user->getId());
             $flashbag = $this->get('session')->getFlashBag();
             $flashbag->add("SuccessfullLogin", "You successfully logged in our site!");
-            return $this->redirectToRoute('EventsAndPeople');
+            return $this->redirectToRoute('BoardFind');
         }
         return $this->render('home/LoginForm.html.twig', array(
             'form' => $form->createView(),

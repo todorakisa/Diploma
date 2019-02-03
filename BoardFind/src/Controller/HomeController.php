@@ -31,7 +31,7 @@ class HomeController extends AbstractController
 {
 
     /**
-     * @Route("/EventsAndPeople", name="EventsAndPeople")
+     * @Route("/BoardFind", name="BoardFind")
      */
     public function eventsAndPeople()
     {
@@ -43,11 +43,11 @@ class HomeController extends AbstractController
      */
     public function redirecting()
     {
-        return $this->redirectToRoute('EventsAndPeople');
+        return $this->redirectToRoute('BoardFind');
     }
 
     /**
-     * @Route("/EventsAndPeople/Home", name="Home")
+     * @Route("/BoardFind/Home", name="Home")
      */
     public function homePage()
     {
@@ -55,7 +55,7 @@ class HomeController extends AbstractController
     }
 
     /**
-     * @Route("/EventsAndPeople/About", name="About")
+     * @Route("/BoardFind/About", name="About")
      */
     public function aboutPage()
     {
@@ -63,7 +63,7 @@ class HomeController extends AbstractController
     }
 
     /**
-     * @Route("/EventsAndPeople/Account", name="Account")
+     * @Route("/BoardFind/Account", name="Account")
      */
     public function accountPage()
     {
@@ -71,7 +71,7 @@ class HomeController extends AbstractController
     }
 
     /**
-     * @Route("/EventsAndPeople/Trade", name="Trade")
+     * @Route("/BoardFind/Trade", name="Trade")
      */
     public function tradePage()
     {
