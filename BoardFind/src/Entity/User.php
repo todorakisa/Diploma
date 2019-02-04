@@ -46,6 +46,20 @@ class User
     private $password;
 
     /**
+     * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
+     * @Assert\Length(max = 4096)
+     */
+    private $name;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
+     * @Assert\Length(max = 4096)
+     */
+    private $lastname;
+
+    /**
      * @ORM\OneToMany(targetEntity="App\Entity\TradeOffer", mappedBy="usertrade")
      */
     private $tradeoffers;
@@ -111,13 +125,13 @@ class User
 
     public function addProduct(?TradeOffer $offer)
     {
-        return $this->tradeoffers.$this->addProduct($offer);
+        return $this->tradeoffers->add($offer);
     }
 
-//    public function removeProduct()
-//    {
-//        return $this->tradeoffers;
-//    }
+    public function removeProduct(?TradeOffer $offer)
+    {
+        return $this->tradeoffers->remove($offer);
+    }
 
     public function getIsadmin(): ?bool
     {
@@ -127,6 +141,26 @@ class User
     public function setIsadmin(bool $bool)
     {
         $this->isadmin = $bool;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $n)
+    {
+        $this->name = $n;
+    }
+
+    public function getLastName(): ?string
+    {
+        return $this->lastname;
+    }
+
+    public function setLastName(string $name)
+    {
+        $this->lastname = $name;
     }
 
 }

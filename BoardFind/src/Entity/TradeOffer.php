@@ -20,34 +20,30 @@ class TradeOffer
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank()
      * @Assert\Email()
      */
     protected $traderemail;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank()
      * @Assert\Length(max = 200)
      */
     private $tradername;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank()
      * @Assert\Length(max = 200)
      */
     private $traderlastname;
 
     /**
-     * @ORM\Column(type="decimal")
+     * @Assert\Type("string")
      * @Assert\NotBlank()
      */
     private $price;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank()
      * @Assert\Length(max = 200)
      */
     private $nameofgame;
@@ -57,11 +53,10 @@ class TradeOffer
      * @Assert\NotBlank()
      * @Assert\Length(max = 200)
      */
-    private $offername;
+    private $title;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank()
      * @Assert\Length(max = 4096)
      */
     private $description;
@@ -70,6 +65,12 @@ class TradeOffer
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="tradeoffers")
      */
     private $usertrade;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @Assert\Length(max = 20)
+     */
+    private $numbertelephone;
 
 
     public function getId(): ?int
@@ -119,12 +120,12 @@ class TradeOffer
         $this->traderlastname = $name;
     }
 
-    public function getPrice() : ?decimal
+    public function getPrice() : ?string
     {
         return $this->price;
     }
 
-    public function setPrice(decimal $number)
+    public function setPrice(string $number)
     {
         $this->price = $number;
     }
@@ -139,14 +140,14 @@ class TradeOffer
         $this->nameofgame = $name;
     }
 
-    public function getOfferName() : ?string
+    public function getTitle() : ?string
     {
-        return $this->offername;
+        return $this->title;
     }
 
-    public function setOfferName(string $name)
+    public function setTitle(string $name)
     {
-        $this->offername = $name;
+        $this->title = $name;
     }
 
     public function getDescription() : ?string
@@ -169,6 +170,14 @@ class TradeOffer
         $this->usertrade = $usert;
     }
 
+    public function setNumberTelephone(string $number)
+    {
+        $this->numbertelephone = $number;
+    }
 
+    public function getNumberTelephone() : ?string
+    {
+        return $this->numbertelephone;
+    }
 
 }

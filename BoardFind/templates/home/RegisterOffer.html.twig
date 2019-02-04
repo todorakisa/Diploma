@@ -1,10 +1,10 @@
 {% extends '/home/base.html.twig' %}
-{% block title %}Register{% endblock %}
+{% block title %}Trade{% endblock %}
 {% block sidebar %}
     <a style="pointer-events: none; cursor: default;" id = "exception"> <img src="{{ asset('build/images/logo.png') }}" width="108" height="46" style="vertical-align: middle"> </a>
-    <a class="active" href="/BoardFind/Home">Home</a>
+    <a href="/BoardFind/Home">Home</a>
     <a href="/BoardFind">Events & People</a>
-    <a href="./Trade.html">Trade</a>
+    <a class="active" href="/EventsAndPeople/Trade">Trade</a>
     <a href="/BoardFind/Trade">Chat</a>
     <a href="/BoardFind/Account">Account</a>
     <a href="/BoardFind/About">About us</a>
@@ -15,21 +15,21 @@
          margin-left="20%";
          margin-right="20%";>
         <p align="center" class ="reg">
-            <span class="regreg"> REGISTER </span>
+            <span class="regreg"> Create an Offer </span>
             <br><br>
         </p>
         <div align="center">
             <div id="info" class ="fill">
                 {{ form_start(form) }}
-                {{ form_row(form.name, { 'attr': {'class': 'fill'} }) }}
+                {{ form_row(form.title, { 'attr': {'class': 'fill'} }) }}
                 <br>
-                {{ form_row(form.lastname, { 'attr': {'class': 'fill'} }) }}
+                {{ form_row(form.nameofgame, { 'attr': {'class': 'fill'} }) }}
                 <br>
-                {{ form_row(form.username, { 'attr': {'class': 'fill'} }) }}
+                {{ form_row(form.price, { 'attr': {'class': 'fill'} }) }}
                 <br>
-                {{ form_row(form.password, { 'attr': {'class': 'fill'} }) }}
+                {{ form_row(form.numbertelephone, { 'attr': {'class': 'fill'} }) }}
                 <br>
-                {{ form_row(form.email, { 'attr': {'class': 'fill'} }) }}
+                {{ form_row(form.description, { 'attr': {'class': 'fill'} }) }}
                 <br>
                 <p class="mustadd" align="center">fields with * must be filled!</p>
             </div>
@@ -39,6 +39,6 @@
     <div align="center">
         {{ form_row(form.save) }}
     </div>
-    {{  form_end(form)}}
+    {{ form_end(form)}}
     <br><br>
 {% endblock %}
