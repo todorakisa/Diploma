@@ -37,8 +37,8 @@ class TradeOffer
     private $traderlastname;
 
     /**
-     * @Assert\Type("string")
-     * @Assert\NotBlank()
+     * @ORM\Column(type="string", length=255)
+     * @Assert\Length(max = 200)
      */
     private $price;
 

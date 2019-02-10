@@ -118,7 +118,7 @@ class User
     /**
      * @return Collection|TradeOffer[]
      */
-    public function getProducts(): Collection
+    public function getProducts(): ?ArrayCollection
     {
         return $this->tradeoffers;
     }

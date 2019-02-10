@@ -19,9 +19,21 @@ class TradeController extends AbstractController
     public function tradePage()
     {
         $Offers = $this->getDoctrine()
-            ->getRepository(User::class)->findAll();
+            ->getRepository(TradeOffer::class)->findAll();
         return $this->render('Home/ListOffers.html.twig', array(
         "arrayOfOffers" => $Offers,
+        ));
+    }
+
+    /**
+     * @Route("/BoardFind/Offer/{id}", name="Details")
+     */
+    public function seeingOffer($id)
+    {
+        $offer = $this->getDoctrine()
+            ->getRepository(TradeOffer::class)->find($id);
+        return $this->render('Home/OfferDetails.html.twig', array(
+        "Offer" => $offer,
         ));
     }
 
@@ -34,7 +46,6 @@ class TradeController extends AbstractController
     {
         $Offer = new TradeOffer();
         $form = $this->createForm(OfferType::class, $Offer);
-        echo "sdsds";
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $Offer = $form->getData();
@@ -44,7 +55,6 @@ class TradeController extends AbstractController
             $userId = $session->get("id");
             $user = $this->getDoctrine()
                 ->getRepository(User::class)->find($userId);
-            echo "sdsds";
             $Offer->setUser($user);
             $Offer->setTraderName($user->getName());
             $Offer->setTraderLastName($user->getLastName());

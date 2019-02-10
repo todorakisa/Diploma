@@ -21,19 +21,15 @@
     <br>
 
     <div class = "transbox3">
+        {% for key,offer in arrayOfOffers %}
         <br>
         <p class = "trade">
-            <img class= "boardpic" src="{{ asset('build/images/trump.jpg') }}"> The Offert Title Will Be Here
-            <span class = "gameprice"> 100$ </span>
-            <button class= "create2 button8"><b>Details</b></button>
+            <img class= "boardpic" src="{{ asset('build/images/trump.jpg') }}"> {{  offer.title }}
+            <span class = "gameprice"> {{  offer.price }}$ </span>
+            <a href = "/BoardFind/Offer/{{ offer.id }}" ><button class= "create2 button8"><b>Details</b></button></a>
         </p>
         <br>
-        <p class = "trade">
-            <img class = "boardpic" src="{{ asset('build/images/monopoly.jpg') }}"> The Offert Title Will Be Here
-            <span class = "gameprice"> 30$ </span>
-            <button class = "create2 button8"><b>Details</b></button>
-        </p>
-        <br>
+        {% endfor %}
     </div>
     <br>
 {% endblock %}

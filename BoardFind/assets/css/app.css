@@ -491,6 +491,136 @@
     background-color: #c052ce;
 }
 
+.detpic {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    max-width: 26.4vw;
+    max-height: 26.4vw;
+}
+
+.whole {
+    display: flex;
+}
+
+.contain3 {
+    position: relative;
+    display: inline-block;
+    width: 26.5vw;
+    height: 26.5vw;
+    vertical-align: middle;
+    border: 0.2vw;
+    border-style: solid;
+    border-color: #6c1a7c white white #6c1a7c;
+    box-shadow: 0.73vw 0.73vw 0.37vw #6c1a7c;
+}
+
+.contain4 {
+    width: 50vw;
+    height: 24.6vw;
+    margin-left: 1.7vw;
+    position: relative;
+    display: inline-block;
+    font-size: 2.1vw;
+    color: white;
+    font-weight: bold;
+    vertical-align: middle;
+    background-color: #6c1a7c;
+    padding-bottom: 2.35vw;
+    padding-left: 1.5vw;
+    font-family: Comic Sans MS;
+    line-height: 2.6vw;
+}
+
+.contain5 {
+    width: 14.4vw;
+    height: 24.5vw;
+    margin-left: 0.7vw;
+    position: relative;
+    display: inline-block;
+    font-size: 2.1vw;
+    color: #6c1a7c;
+    font-weight: bold;
+    vertical-align: middle;
+    background-color: white;
+    padding-bottom: 2.3vw;
+    padding-left: 1.5vw;
+    font-family: Comic Sans MS;
+    line-height: 3vw;
+}
+
+.contain6 {
+    width: 78vw;
+    height: 24.5vw;
+    margin-left: 0.7vw;
+    position: relative;
+    display: inline-block;
+    font-size: 2.1vw;
+    color: #6c1a7c;
+    font-weight: bold;
+    vertical-align: middle;
+    background-color: white;
+    padding-bottom: 2.3vw;
+    padding-left: 1.5vw;
+    font-family: Comic Sans MS;
+    word-wrap: break-word;
+}
+
+.ofname {
+    background-color: white;
+    font-size: 2.4vw;
+    color: #6c1a7c;
+    padding-top: 1vw;
+    padding-bottom: 1vw;
+    margin-left: -1.5vw;
+}
+
+.offerprice {
+    background-color: #9e1eb5;
+    color: white;
+    max-width: 9vw;
+    margin-top: 1.3vw;
+    margin-left: -0.2vw;
+    font-size: 3.6vw;
+    padding-top: 1.2vw;
+    padding-bottom: 1.2vw;
+    padding-left: 2.2vw;
+    padding-right: 2.2vw;
+    border-radius: 0.6vw;
+}
+
+.bac2 {
+    background-color: #6c1a7c;
+    margin-top: -1.1vw;
+    margin-left: -1.5vw;
+    color: white;
+    padding-left: 3vw;
+    padding-bottom: 0.45vw;
+}
+
+.sellerpic {
+    width: 9.6vw;
+    height: 9.6vw;
+    border-radius: 50%;
+    margin-top: 2vw;
+}
+
+.sellusername {
+    margin-left: -1vw;
+}
+
+.offerdes{
+    background-color: #6c1a7c;
+    color: white;
+    font-size: 2.5vw;
+    padding-top: 0.5vw;
+    padding-bottom: 0.5vw;
+    margin-left: -1.5vw;
+}
+
 .changepic {
     color: white;
     font-size: 30px;
