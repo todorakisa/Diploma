@@ -21,7 +21,7 @@ class AppExtension extends \Twig_Extension
     public function getUsernameByUserId($id)
     {
         $user = $this->em->getRepository("App:User")
-            ->findOneById($id);
+            ->find($id);
 
         return $user->getUsername();
     }
