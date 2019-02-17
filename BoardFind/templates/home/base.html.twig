@@ -52,12 +52,19 @@
         <a href="/BoardFind/Account">Account</a>
         <a href="/BoardFind/About">About us</a>
         {% endblock %}
+        {% block active %}
+            {% if app.session.has('id') == true %}
+                {% if isAdmin(app.session.get('id')) == true %}
+                        <a href="/BoardFind/Admin"> Admin Pannel </a>
+                {% endif %}
+            {% endif %}
+        {% endblock %}
         {% if app.session.has('id') == false %}
             <a style="float:right" href="/BoardFind/Register">Register</a>
             <a style="float:right" href="/BoardFind/Login">Login</a>
         {% else %}
             <a style="float:right" href="/BoardFind/Logout">Logout</a>
-            <a style="float:right;pointer-events: none; cursor: default;" style="pointer-events: none; cursor: default;">Hello, {{userIdInformation(app.session.get('id'))}}</a>
+            <a style="float:right;pointer-events: none; cursor: default;">Hello, {{userIdInformation(app.session.get('id'))}}</a>
         {% endif %}
         <a href="javascript:void(0);" class="icon" onclick="myFunction()"><i class="bars"></i></a>
     </div>

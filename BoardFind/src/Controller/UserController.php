@@ -58,7 +58,7 @@ class UserController extends AbstractController
     {
         $user = new User();
         $form = $this->createForm(UserLoginType::class, $user);
-
+        $flashbag = $this->get('session')->getFlashBag();
         $form->handleRequest($request);
         if ($form->isSubmitted()) {
             $notTrueUser = $form->getData();
@@ -67,12 +67,10 @@ class UserController extends AbstractController
                 ->getRepository(User::class)
                 ->findOneByPasswordAndUsername($notTrueUser->getPassword(),$notTrueUser->getUsername());
             if (!$user) {
-                throw $this->createNotFoundException(
-                    'No product found for this email and password '
-                );
+                $flashbag->add("LoginError", "No User was found for this username and password, try again");
+                return $this->redirectToRoute('Login');
             }
             $this->get('session')->set('id', $user->getId());
-            $flashbag = $this->get('session')->getFlashBag();
             $flashbag->add("SuccessfullLogin", "You successfully logged in our site!");
             return $this->redirectToRoute('BoardFind');
         }

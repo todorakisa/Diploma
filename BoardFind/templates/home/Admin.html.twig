@@ -7,16 +7,15 @@
     <a href="/BoardFind/Trade">Trade</a>
     <a href="#chat">Chat</a>
     <a href="/BoardFind/Account">Account</a>
-    <a class="active" href="/BoardFind/About">About us</a>
+    <a href="/BoardFind/About">About us</a>
+{% endblock %}
+{% block active %}
+    <a class="active" href="/BoardFind/Admin"> Admin Pannel </a>
 {% endblock %}
 {% block pageContent %}
-    <br>
-    <p align="center" id="aboutus">
-        We are devolepers and this is our startup!
-        We love board games and that's why we descided
-        to create a platform where everyone can find a frend to play 😀.
-        To contact <br>Us please send email to <span id="mail"> todor.domitrov2000@gmail.com </span>
-        or use the aforementioned coordinates. Have Fun!
-    </p>
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br>
+    <a><button class="create button1"><b>See All Offers</b></button></a>
+    &nbsp OR
+    <a href = "/BoardFind/Admin/AllUsers"><button  button class="create button1"><b>See All Users</b></button></a>
+    <br><br><br><br><br><br><br><br><br><br>
 {% endblock %}

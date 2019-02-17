@@ -62,6 +62,11 @@ class User
      */
     private $tradeoffers;
 
+    /**
+     * @ORM\Column(type="boolean")
+     * @Assert\Length(max = 4096)
+     */
+    private $isadmin;
 
     /**
      * @ORM\Column(type="boolean")
