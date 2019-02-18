@@ -21,14 +21,26 @@ class UserController extends AbstractController
     public function register(Request $request)
     {
         $user = new User();
+        $flashbag = $this->get('session')->getFlashBag();
         $form = $this->createForm(UserType::class, $user);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $user = $form->getData();
+            $falseEmailUser = $this->getDoctrine()
+                ->getRepository(User::class)
+                ->findOneByEmail($user->getEmail());
+            $falseUsernameUser = $this->getDoctrine()
+                ->getRepository(User::class)
+                ->findOneByUsername($user->getUsername());
+            if( $falseEmailUser != null || $falseUsernameUser != null){
+                $flashbag->add("RegisterError", "Username or Email alwready taken");
+                return $this->redirectToRoute('Register');
+            }
             $entityManager = $this->getDoctrine()->getManager();
             $user->setPassword(hash("sha256",$user->getPassword()));
             $user->setIsadmin(false);
+            $user->setIsDeleted(false);
             $entityManager->persist($user);
             $entityManager->flush();
             $flashbag = $this->get('session')->getFlashBag();

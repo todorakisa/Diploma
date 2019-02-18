@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\TradeOffer;
 use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -19,6 +20,18 @@ class AdminController extends AbstractController
     }
 
     /**
+     * @Route("/BoardFind/Admin/AllOffers", name="AllOffers")
+     */
+    public function adminPanelOffers()
+    {
+        $Offers = $this->getDoctrine()
+            ->getRepository(TradeOffer::class)->findAll();
+        return $this->render('Home/ListOffersAdmin.html.twig', array(
+            "arrayOfOffers" => $Offers,
+        ));
+    }
+
+    /**
      * @Route("/BoardFind/Admin/AllUsers", name="AllUsers")
      */
     public function adminPanelUsers()
@@ -33,18 +46,20 @@ class AdminController extends AbstractController
     /**
      * @Route("/BoardFind/Admin/DeleteUser/{id}", name="DeleteUser")
      */
-    public function adminPanelUserDelete()
+    public function adminPanelUserDelete($id)
     {
-        $offer = $this->getDoctrine()
-            ->getRepository(TradeOffer::class)->find($id);
-
+        $entityManager = $this->getDoctrine()->getManager();
+        $user = $entityManager->getRepository("App:User")
+            ->find($id);
+        $user->setIsDeleted(true);
+        $entityManager->flush();
         return $this->redirectToRoute('AllUsers');
     }
 
     /**
-     * @Route("/BoardFind/Admin/AllOffers", name="AllOffers")
+     * @Route("/BoardFind/Admin/DeleteOffer/{id}", name="DeleteOffer")
      */
-    public function adminPanelOffers()
+    public function adminPanelOfferDelete($id)
     {
         return $this->render('Home/Admin.html.twig');
     }

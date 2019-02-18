@@ -13,24 +13,21 @@
     <a class="active" href="/BoardFind/Admin"> Admin Pannel </a>
 {% endblock %}
 {% block pageContent %}
-
     <p align = "center">
-        <span class="tradetitle"> Users </span>
+        <span class="tradetitle"> Offers </span>
     </p>
+    <br>
 
     <div class = "transbox3">
-        <p class = "trade">
-            Username | Name | Last Name
-        </p>
-        {% for key,user in arrayOfUsers %}
-            {% if user.isdeleted == false %}
-                <br>
-                <p class = "trade">
-                    {{  user.username }} | {{  user.name }} | {{  user.lastname }}
-                    <a href="/BoardFind/Admin/DeleteUser/{{user.id}}" ><button class= "create3 delete"><b>Delete</b></button></a>
-                </p>
-                <br>
-            {% endif %}
+        {% for key,offer in arrayOfOffers %}
+            <br>
+            <p class = "trade">
+                <img class= "boardpic" src="{{ asset('build/images/trump.jpg') }}"> {{  offer.title }}
+                <span class = "gameprice"> {{  offer.price }}$ </span>
+                <a href = "/BoardFind/Admin/EditOffer/{{ offer.id }}" ><button class= "create2 button8"><b>Edit</b></button></a>
+                <a href="/BoardFind/Admin/DeleteOffer/{{ offer.id}}" ><button class= "create3 delete"><b>Delete</b></button></a>
+            </p>
+            <br>
         {% endfor %}
     </div>
     <br>

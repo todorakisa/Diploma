@@ -18,13 +18,13 @@ class Event
     private $id;
 
     /**
-     * @ORM\Column(type="double")
+     * @ORM\Column(type="string")
      * @Assert\NotBlank()
      */
     private $latitude;
 
     /**
-     * @ORM\Column(type="double")
+     * @ORM\Column(type="string")
      * @Assert\NotBlank()
      */
     private $longitude;

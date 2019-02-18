@@ -36,13 +36,15 @@ class UserRepository extends ServiceEntityRepository
     }
     */
 
-    public function findOneByPasswordAndEmailAndUsername($password,$email,$username): ?User
+    public function findOneByPasswordAndEmailAndUsername($password,$email,$username,$isdeleted = false): ?User
     {
         return $this->createQueryBuilder('u')
             ->andWhere('u.password = :pass')
             ->setParameter('pass', $password)
             ->andWhere('u.email = :email')
             ->setParameter('email', $email)
+            ->andWhere('u.isdeleted = :is')
+            ->setParameter('is', $isdeleted)
             ->andWhere('u.username = :username')
             ->setParameter('username', $username)
             ->getQuery()
@@ -50,13 +52,39 @@ class UserRepository extends ServiceEntityRepository
         ;
     }
 
-    public function findOneByPasswordAndUsername($password,$username): ?User
+    public function findOneByPasswordAndUsername($password,$username,$isdeleted = false): ?User
     {
         return $this->createQueryBuilder('u')
             ->andWhere('u.password = :pass')
             ->setParameter('pass', $password)
+            ->andWhere('u.isdeleted = :is')
+            ->setParameter('is', $isdeleted)
             ->andWhere('u.username = :username')
             ->setParameter('username', $username)
+            ->getQuery()
+            ->getOneOrNullResult()
+            ;
+    }
+
+    public function findOneByEmail($email, $isdeleted = false): ?User
+    {
+        return $this->createQueryBuilder('u')
+            ->andWhere('u.email = :e')
+            ->setParameter('e', $email)
+            ->andWhere('u.isdeleted = :is')
+            ->setParameter('is', $isdeleted)
+            ->getQuery()
+            ->getOneOrNullResult()
+            ;
+    }
+
+    public function findOneByUsername($username, $isdeleted = false): ?User
+    {
+        return $this->createQueryBuilder('u')
+            ->andWhere('u.username = :us')
+            ->setParameter('us', $username)
+            ->andWhere('u.isdeleted = :is')
+            ->setParameter('is', $isdeleted)
             ->getQuery()
             ->getOneOrNullResult()
             ;

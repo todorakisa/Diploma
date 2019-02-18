@@ -10,8 +10,6 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
- * @UniqueEntity(fields="email", message="Email already taken")
- * @UniqueEntity(fields="username", message="Username already taken")
  */
 class User
 {
@@ -64,15 +62,13 @@ class User
 
     /**
      * @ORM\Column(type="boolean")
-     * @Assert\Length(max = 4096)
      */
     private $isadmin;
 
     /**
      * @ORM\Column(type="boolean")
-     * @Assert\Length(max = 4096)
      */
-    private $isadmin;
+    private $isdeleted;
 
     public function getId(): ?int
     {
@@ -164,6 +160,16 @@ class User
     public function setLastName(string $name)
     {
         $this->lastname = $name;
+    }
+
+    public function getIsDeleted(): ?bool
+    {
+        return $this->isdeleted;
+    }
+
+    public function setIsDeleted(bool $bool)
+    {
+        $this->isdeleted = $bool;
     }
 
 }

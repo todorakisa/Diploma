@@ -179,5 +179,4 @@ class TradeOffer
     {
         return $this->numbertelephone;
     }
-
 }
