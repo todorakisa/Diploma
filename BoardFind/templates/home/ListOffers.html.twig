@@ -6,7 +6,9 @@
     <a href="/BoardFind">Events & People</a>
     <a class="active" href="/EventsAndPeople/Trade">Trade</a>
     <a href="/BoardFind/Trade">Chat</a>
-    <a href="/BoardFind/Account">Account</a>
+    {% if app.session.has('id') == true %}
+        <a href="/BoardFind/Account">Account</a>
+    {% endif %}
     <a href="/BoardFind/About">About us</a>
 {% endblock %}
 {% block pageContent %}
@@ -14,16 +16,24 @@
         <span class="tradetitle"> Trading Games </span>
     </p>
     <br>
+    {% if app.session.has('id') == false %}
     <div id="Modal" class="modal">
         <div class="modal-content">
-            <span class="closeModal">&times;</span>
-            <p class="alert-success">{{ flash }}</p>
+            <span class="close">&times;</span>
+            <p class="alert-success"> You must be logged to our site to use that function,
+                If you're not registered register <a href="/BoardFind/Register">here</a> </p>
         </div>
     </div>
     <div align = "center">
-        <a href = "/BoardFind/Trade/RegisterOffer" ><button class = "create3 button11" ><b>+ Create an Offer</b></button></a>
+        <button id = "catch" class = "create3 button11" ><b>+ Create an Offer</b></button>
     </div>
     <br>
+    {% else %}
+    <div align = "center">
+        <a href = "/BoardFind/Trade/RegisterOffer" ><button id = "catch" class = "create3 button11" ><b>+ Create an Offer</b></button></a>
+    </div>
+    <br>
+    {% endif %}
 
     <div class = "transbox3">
         {% for key,offer in arrayOfOffers %}

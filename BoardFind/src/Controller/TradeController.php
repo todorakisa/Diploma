@@ -57,10 +57,6 @@ class TradeController extends AbstractController
                 ->getRepository(User::class)->find($userId);
             $Offer->setUser($user);
             $Offer->setIsDeleted(false);
-            $Offer->setTraderName($user->getName());
-            $Offer->setTraderLastName($user->getLastName());
-            $Offer->setUsername($user->getUsername());
-            $Offer->setTraderEmail($user->getEmail());
 
             $entityManager->persist($Offer);
             $entityManager->flush();

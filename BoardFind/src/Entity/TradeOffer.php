@@ -20,24 +20,6 @@ class TradeOffer
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\Email()
-     */
-    protected $traderemail;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     * @Assert\Length(max = 200)
-     */
-    private $tradername;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     * @Assert\Length(max = 200)
-     */
-    private $traderlastname;
-
-    /**
-     * @ORM\Column(type="string", length=255)
      * @Assert\Length(max = 200)
      */
     private $price;
@@ -67,12 +49,6 @@ class TradeOffer
     private $usertrade;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     * @Assert\Length(max = 20)
-     */
-    private $numbertelephone;
-
-    /**
      * @ORM\Column(type="boolean")
      */
     private $isdeleted;
@@ -80,48 +56,6 @@ class TradeOffer
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getTraderEmail() : ?string
-    {
-        return $this->traderemail;
-    }
-
-    public function setTraderEmail(string $email)
-    {
-        $this->traderemail = $email;
-    }
-
-    public function getUsername(): ?string
-    {
-        return $this->username;
-    }
-
-    public function setUsername(string $username): self
-    {
-        $this->username = $username;
-
-        return $this;
-    }
-
-    public function getTraderName() : ?string
-    {
-        return $this->tradername;
-    }
-
-    public function setTraderName(string $name)
-    {
-        $this->tradername = $name;
-    }
-
-    public function getTraderLastName() : ?string
-    {
-        return $this->traderlastname;
-    }
-
-    public function setTraderLastName(string $name)
-    {
-        $this->traderlastname = $name;
     }
 
     public function getPrice() : ?string
@@ -172,16 +106,6 @@ class TradeOffer
     public function setUser(?User $usert)
     {
         $this->usertrade = $usert;
-    }
-
-    public function setNumberTelephone(string $number)
-    {
-        $this->numbertelephone = $number;
-    }
-
-    public function getNumberTelephone() : ?string
-    {
-        return $this->numbertelephone;
     }
 
     public function getIsDeleted(): ?bool

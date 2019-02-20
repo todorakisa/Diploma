@@ -20,18 +20,18 @@
         <br>
         Game: &nbsp {{ Offer.nameofgame }}
         <br><br>
-        State: &nbsp Little-used
+        Email: &nbsp {{ getEmailByOfferId(Offer.id) }}
         <br><br>
-        Seller: &nbsp {{ Offer.tradername }} {{ Offer.traderlastname }}
+        Seller: &nbsp {{ getNameByOfferId(Offer.id) }} {{ getLastNameByOfferId(Offer.id) }}
         <br><br>
-        Phone: &nbsp {{ Offer.numbertelephone }}
+        Phone: &nbsp {{ getTelephoneByOfferId(Offer.id) }}
     </div><div class = "contain5">
         <div align = "center" class = "offerprice"> {{ Offer.price }}$ </div>
         <br>
         <div class = "bac2">
             <img class="sellerpic" src="{{ asset('build/images/87h.jpg') }}">
             <br>
-            <div class = "sellusername"> ... </div>
+            <div class = "sellusername"> {{ getOfferUsername(Offer.id) }} </div>
             <br>
         </div>
     </div>

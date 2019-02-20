@@ -21,16 +21,16 @@
         </div>
 
         <div class = "contain2">
-            Name: &nbsp Todor Dimitrov
+            Name: &nbsp {{ getNameOfUser(app.session.get('id')) }} {{ getLastNameOfUser(app.session.get('id')) }}
             <div class = "pencils"> </div>
             <br><br>
-            Username: &nbsp Kostinbrod, Bulgaria
+            Username: &nbsp {{ userIdInformation(app.session.get('id')) }}
             <div class = "pencils"> </div>
             <br><br>
-            Email: &nbsp todor.domitrov2000@gmail.com
+            Email: &nbsp {{ getEmailOfUser(app.session.get('id')) }}
             <div class = "pencils"> </div>
             <br><br>
-            Phone: &nbsp 0890909387
+            Phone: &nbsp {{ getPhoneOfUser(app.session.get('id')) }}
             <div class = "pencils"> </div>
         </div>
     </div>

@@ -56,6 +56,13 @@ class User
     private $lastname;
 
     /**
+     * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
+     * @Assert\Length(max = 20)
+     */
+    private $telephone;
+
+    /**
      * @ORM\OneToMany(targetEntity="App\Entity\TradeOffer", mappedBy="usertrade")
      */
     private $tradeoffers;
@@ -170,6 +177,16 @@ class User
     public function setIsDeleted(bool $bool)
     {
         $this->isdeleted = $bool;
+    }
+
+    public function getTelephone(): ?string
+    {
+        return $this->telephone;
+    }
+
+    public function setTelephone(string $tel)
+    {
+        $this->telephone = $tel;
     }
 
 }
