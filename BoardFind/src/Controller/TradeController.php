@@ -56,6 +56,7 @@ class TradeController extends AbstractController
             $user = $this->getDoctrine()
                 ->getRepository(User::class)->find($userId);
             $Offer->setUser($user);
+            $Offer->setIsDeleted(false);
             $Offer->setTraderName($user->getName());
             $Offer->setTraderLastName($user->getLastName());
             $Offer->setUsername($user->getUsername());

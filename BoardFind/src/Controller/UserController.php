@@ -55,11 +55,27 @@ class UserController extends AbstractController
     /**
      * @Route("/BoardFind/Logout", name="Logout")
      */
-    public function Logout()
+    public function logout()
     {
-        $this->get('session')->clear();
+        $this->get('session')->remove('id');
         $flashbag = $this->get('session')->getFlashBag();
         $flashbag->add("SuccessfullLoggout", "You successfully logout from our site!");
+        return $this->redirectToRoute('BoardFind');
+    }
+
+    /**
+     * @Route("/BoardFind/DeleteUser/{id}", name="DeleteUser")
+     */
+    public function deleteUser($id)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $user = $entityManager->getRepository("App:User")
+            ->find($id);
+        $user->setIsDeleted(true);
+        $entityManager->flush();
+        $this->get('session')->remove('id');
+        $flashbag = $this->get('session')->getFlashBag();
+        $flashbag->add("SuccessfullLoggout", "You successfully removed your account from our site enjoy!");
         return $this->redirectToRoute('BoardFind');
     }
 

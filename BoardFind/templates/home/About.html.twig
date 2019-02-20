@@ -6,7 +6,9 @@
     <a href="/BoardFind">Events & People</a>
     <a href="/BoardFind/Trade">Trade</a>
     <a href="#chat">Chat</a>
-    <a href="/BoardFind/Account">Account</a>
+    {% if app.session.has('id') == true %}
+        <a href="/BoardFind/Account">Account</a>
+    {% endif %}
     <a class="active" href="/BoardFind/About">About us</a>
 {% endblock %}
 {% block pageContent %}

@@ -44,7 +44,7 @@ class AdminController extends AbstractController
     }
 
     /**
-     * @Route("/BoardFind/Admin/DeleteUser/{id}", name="DeleteUser")
+     * @Route("/BoardFind/Admin/DeleteUser/{id}", name="AdminDeleteUser")
      */
     public function adminPanelUserDelete($id)
     {
@@ -61,6 +61,11 @@ class AdminController extends AbstractController
      */
     public function adminPanelOfferDelete($id)
     {
-        return $this->render('Home/Admin.html.twig');
+        $entityManager = $this->getDoctrine()->getManager();
+        $offer = $entityManager->getRepository("App:TradeOffer")
+            ->find($id);
+        $offer->setIsDeleted(true);
+        $entityManager->flush();
+        return $this->redirectToRoute('AllOffers');
     }
 }

@@ -14,7 +14,12 @@
         <span class="tradetitle"> Trading Games </span>
     </p>
     <br>
-
+    <div id="Modal" class="modal">
+        <div class="modal-content">
+            <span class="closeModal">&times;</span>
+            <p class="alert-success">{{ flash }}</p>
+        </div>
+    </div>
     <div align = "center">
         <a href = "/BoardFind/Trade/RegisterOffer" ><button class = "create3 button11" ><b>+ Create an Offer</b></button></a>
     </div>
@@ -22,6 +27,7 @@
 
     <div class = "transbox3">
         {% for key,offer in arrayOfOffers %}
+            {% if offer.isdeleted == false %}
         <br>
         <p class = "trade">
             <img class= "boardpic" src="{{ asset('build/images/trump.jpg') }}"> {{  offer.title }}
@@ -29,6 +35,7 @@
             <a href = "/BoardFind/Offer/{{ offer.id }}" ><button class= "create2 button8"><b>Details</b></button></a>
         </p>
         <br>
+            {% endif %}
         {% endfor %}
     </div>
     <br>

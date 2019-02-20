@@ -72,6 +72,10 @@ class TradeOffer
      */
     private $numbertelephone;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isdeleted;
 
     public function getId(): ?int
     {
@@ -178,5 +182,15 @@ class TradeOffer
     public function getNumberTelephone() : ?string
     {
         return $this->numbertelephone;
+    }
+
+    public function getIsDeleted(): ?bool
+    {
+        return $this->isdeleted;
+    }
+
+    public function setIsDeleted(bool $bool)
+    {
+        $this->isdeleted = $bool;
     }
 }

@@ -49,7 +49,9 @@
         <a class="active" href="/BoardFind">Events & People</a>
         <a href="/BoardFind/Trade">Trade</a>
         <a href="#chat">Chat</a>
-        <a href="/BoardFind/Account">Account</a>
+            {% if app.session.has('id') == true %}
+                <a href="/BoardFind/Account">Account</a>
+            {% endif %}
         <a href="/BoardFind/About">About us</a>
         {% endblock %}
         {% block active %}
@@ -116,6 +118,19 @@
         }
     </script>
 {% endblock %}
+<script>
+    let mod = document.getElementById('Modal');
+    let s = document.getElementsByClassName("closeModal")[0];
+    mod.style.display = "block";
+    s.onclick = function() {
+        mod.style.display = "none";
+    }
+    window.onclick = function(event) {
+        if (event.target == mod) {
+            modal.style.display = "none";
+        }
+    }
+</script>
 
 </body>
 
