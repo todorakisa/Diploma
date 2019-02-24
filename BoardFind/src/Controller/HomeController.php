@@ -11,7 +11,7 @@ class HomeController extends AbstractController
 {
 
     /**
-     * @Route("/BoardFind", name="BoardFind")
+     * @Route("/BoardFind/EventsAndPeople", name="Events")
      */
     public function eventsAndPeople()
     {
@@ -23,7 +23,15 @@ class HomeController extends AbstractController
      */
     public function redirecting()
     {
-        return $this->redirectToRoute('BoardFind');
+        return $this->redirectToRoute('Home');
+    }
+
+    /**
+     * @Route("/BoardFind")
+     */
+    public function redirectingToHome()
+    {
+        return $this->redirectToRoute('Home');
     }
 
     /**

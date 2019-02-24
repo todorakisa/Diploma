@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: todor
- * Date: 2/1/2019
- * Time: 12:24 PM
- */
 
 namespace App\Repository;
 

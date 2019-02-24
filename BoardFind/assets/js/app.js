@@ -23,3 +23,6 @@ require('../images/pen1.png');
 require('../images/pen2.png');
 require('../images/trump.jpg');
 require('../images/87h.jpg');
+require('../images/CurrentPosition.ico');
+require('../images/GoodPositions.png');
+require('../images/EventPositions.png');

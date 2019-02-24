@@ -46,7 +46,7 @@
         {% block sidebar %}
         <a style="pointer-events: none; cursor: default;" id = "exception"> <img src="{{ asset('build/images/logo.png') }}" width="108" height="46" style="vertical-align: middle"> </a>
         <a href="/BoardFind/Home">Home</a>
-        <a class="active" href="/BoardFind">Events & People</a>
+        <a class="active" href="/BoardFind/EventsAndPeople">Events & People</a>
         <a href="/BoardFind/Trade">Trade</a>
         <a href="#chat">Chat</a>
             {% if app.session.has('id') == true %}
@@ -57,7 +57,7 @@
         {% block active %}
             {% if app.session.has('id') == true %}
                 {% if isAdmin(app.session.get('id')) == true %}
-                        <a href="/BoardFind/Admin"> Admin Pannel </a>
+                        <a href="/BoardFind/Admin"> Admin Panel </a>
                 {% endif %}
             {% endif %}
         {% endblock %}

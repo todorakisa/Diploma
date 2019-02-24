@@ -1,0 +1,103 @@
+{% extends '/home/base.html.twig' %}
+{% block title %}Register{% endblock %}
+{% block sidebar %}
+    <a style="pointer-events: none; cursor: default;" id = "exception"> <img src="{{ asset('build/images/logo.png') }}" width="108" height="46" style="vertical-align: middle"> </a>
+    <a class="active" href="/BoardFind/Home">Home</a>
+    <a href="/BoardFind/EventsAndPeople">Events & People</a>
+    <a href="/BoardFind/Trade">Trade</a>
+    <a href="/BoardFind/Trade">Chat</a>
+    <a href="/BoardFind/About">About us</a>
+{% endblock %}
+{% block pageContent %}
+    <div align="center">
+        <div id="map"></div>
+    </div>
+    <br><br>
+    <div class="transbox7"
+         margin-left="20%";
+         margin-right="20%";>
+        <p align="center" class ="reg">
+            <span class="regreg"> REGISTER EVENT </span>
+            <br><br>
+        </p>
+        <p> Just click on the map to select your event location</p>
+        <div align="center">
+            <div id="info" class ="fill">
+                {{ form_start(form) }}
+                {{ form_row(form.title, { 'attr': {'class': 'fill'} }) }}
+                <br>
+                {{ form_row(form.latitude, { 'attr': {'class': 'fill'} }) }}
+                <br>
+                {{ form_row(form.longitude, { 'attr': {'class': 'fill'} }) }}
+                <br>
+                {{ form_row(form.eventday, { 'attr': {'class': 'fill'} }) }}
+                <br>
+                {{ form_row(form.placedescription, { 'attr': {'class': 'fill'} }) }}
+                <br>
+                <p class="mustadd" align="center">fields with * must be filled!</p>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div align="center">
+        {{ form_row(form.save) }}
+    </div>
+    {{  form_end(form)}}
+    <br><br>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxMtLzGZfEeh9d7OfVQPj3OxNFWvl-jn8">
+    </script>
+    <script>
+        function init(){
+            var markerCurrentPosition;
+            var infowindow = new google.maps.InfoWindow({
+                content:"Hello World!"
+            });
+            var map =  new google.maps.Map(document.getElementById('map'), {zoom: 15, center: new google.maps.LatLng(37 , 37)});
+            navigator.geolocation.getCurrentPosition(function (position) {
+                var pos = {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude
+                };
+                map.setCenter(pos);
+                markerCurrentPosition = new google.maps.Marker({
+                    position: pos,
+                    map: map,
+                    title: 'Your Location',
+                    icon: '{{ asset('build/images/CurrentPosition.ico') }}'
+                });
+                google.maps.event.addListener(markerCurrentPosition, 'click', function() {
+                    infowindow.open(map,markerCurrentPosition);
+                });
+            });
+
+            google.maps.event.addListener(map, 'click', function(event) {
+                placeMarker(map, event.latLng);
+            });
+
+            function placeMarker(map, location) {
+                var marker = new google.maps.Marker({
+                    position: location,
+                    map: map,
+                    draggable: true,
+                    icon: '{{ asset('build/images/EventPositions.png') }}'
+                });
+                var infowindow = new google.maps.InfoWindow({
+                    content: 'Latitude: ' + location.lat() +
+                        '<br>Longitude: ' + location.lng()
+                });
+                document.getElementById("event_latitude").value = location.lat();
+                document.getElementById("event_longitude").value = location.lng();
+
+                google.maps.event.addListener(marker, 'dragend', function (evt) {
+                    document.getElementById("event_latitude").value = location.lat();
+                    document.getElementById("event_longitude").value = location.lng();
+                });
+                google.maps.event.addListener(marker, 'dragstart', function (evt) {
+                });
+                // infowindow.open(map,marker);
+            }
+        }
+        window.onload = init;
+    </script>
+{% endblock %}

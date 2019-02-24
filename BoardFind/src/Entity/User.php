@@ -2,11 +2,11 @@
 
 namespace App\Entity;
 
+use App\Repository\EventRepository;
 use Doctrine\ORM\Mapping as ORM;
 use phpDocumentor\Reflection\Types\Boolean;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
@@ -68,6 +68,11 @@ class User
     private $tradeoffers;
 
     /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Event", mappedBy="user")
+     */
+    private $events;
+
+    /**
      * @ORM\Column(type="boolean")
      */
     private $isadmin;
@@ -80,6 +85,24 @@ class User
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    /**
+     * @return Collection|Event[]
+     */
+    public function getEvents(): ?ArrayCollection
+    {
+        return $this->events;
+    }
+
+    public function addEvent(?Event $event)
+    {
+        return $this->events->add($event);
+    }
+
+    public function removeEvent(?Event $event)
+    {
+        return $this->tradeoffers->remove($event);
     }
 
     public function getEmail() : ?string

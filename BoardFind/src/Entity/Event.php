@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\EventRepository")
@@ -18,85 +19,95 @@ class Event
     private $id;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="float")
      * @Assert\NotBlank()
      */
     private $latitude;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="float")
      * @Assert\NotBlank()
      */
     private $longitude;
 
     /**
-     * @Assert\Date
-     * @var string A "d-m-Y" formatted value
+     * @ORM\Column(type="datetime")
+     * @Assert\Type("\DateTime")
+     * @Assert\NotBlank()
      */
-    protected $eventday;
+    protected $eventDay;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=100)
      * @Assert\NotBlank()
      * @Assert\Length(max = 20)
      */
-    private $name;
+    private $title;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=100)
      * @Assert\Length(max = 4096)
      */
     private $placedescription;
 
     /**
      * @ORM\Column(type="integer")
-     * @Assert\NotBlank()
      */
     private $eventownerid;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="events")
+     */
+    private $user;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isdeleted;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getName(): ?string
+    public function getTitle(): ?string
     {
-        return $this->name;
+        return $this->title;
     }
 
-    public function setName(string $n)
+    public function setTitle(string $t)
     {
-        $this->name = $n;
+        $this->title = $t;
     }
 
-    public function getDate(): ?date
+    public function setEventday($day)
     {
-        return $this->eventday;
+        $this->eventDay = $day;
     }
 
-    public function setDate(date $day)
+    public function getEventday()
     {
-        $this->eventday = $day;
+        return $this->eventDay;
     }
 
-    public function getLatitude(): ?double
+    public function getLatitude()
     {
         return $this->latitude;
     }
 
-    public function setLatitude(double $lat)
+    public function setLatitude($lat)
     {
         $this->latitude = $lat;
     }
 
-    public function getLongitude(): ?double
+    public function getLongitude()
     {
         return $this->longitude;
     }
 
-    public function setLongitude(double $lon)
+    public function setLongitude($lon)
     {
-        $this->longitude = $lan;
+        $this->longitude = $lon;
     }
 
     public function getPlaceDescription() : ?string
@@ -118,4 +129,25 @@ class Event
     {
         return $this->eventownerid = $id;
     }
+
+    public function getIsDeleted(): ?bool
+    {
+        return $this->isdeleted;
+    }
+
+    public function setIsDeleted(bool $bool)
+    {
+        $this->isdeleted = $bool;
+    }
+
+    public function getUser() : ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $usert)
+    {
+        $this->user = $usert;
+    }
+
 }

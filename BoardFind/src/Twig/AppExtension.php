@@ -61,7 +61,7 @@ class AppExtension extends \Twig_Extension
     {
         $user = $this->em->getRepository("App:User")
             ->find($id);
-        return $user->getUsername();
+        return $user->getTelephone();
     }
 
     public function getEmailByUserId($id)

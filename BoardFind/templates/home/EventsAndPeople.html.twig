@@ -7,39 +7,9 @@
 </div>
 
 <br>
-
-{#<div align="center">#}
-    {#<div id="map"style="width:1200px;height:800px;background:purple"></div>#}
-    {#<script>#}
-        {#function initMap() {#}
-            {#var center = {lat: 42.662369, lng: 23.373397};#}
-            {#var map = new google.maps.Map(document.getElementById('map'), {#}
-                {#zoom: 15,#}
-                {#center: center#}
-            {#});#}
-            {#var marker = new google.maps.Marker({#}
-                {#position: center,#}
-                {#map: map#}
-            {#});#}
-        {#}#}
-        {#/*<![CDATA[*/#}
-        {#var arrayLatitude;#}
-        {#var arrayLongitude;#}
-        {#var lats = [[${latitudes}]];#}
-        {#var longs = [[${longitudes}]];#}
-        {#for (i = 0; i < lats.length; i++) {#}
-            {#marker = new google.maps.Marker({#}
-                {#position: new google.maps.LatLng(lats[i], longs[i]),#}
-                {#map: map#}
-            {#});#}
-            {#/*]]>*/#}
-        {#}#}
-    {#</script>#}
-    {#<script async defer#}
-            {#src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8SYKd91aaFo6L3B-sq4tbSHa-wHzuByE&callback=initMap">#}
-    {#</script>#}
-{#</div>#}
-
+    <div align="center">
+        <div id="map"></div>
+    </div>
 <br>
 <div class="transbox">
     <p align="center" class ="specialText">
@@ -59,8 +29,55 @@
 </p>
 <br>
 <p align="center" class ="specialText">
-    <a><button class="create button1"><b>Create an Event</b></button></a>
-    &nbsp OR
+    <a href="/BoardFind/EventsAndPeople/RegisterEvent"><button class="create button1"><b>Create an Event</b></button></a>
+    OR
     <a><button  button class="create button1"><b>See All Events</b></button></a>
 </p>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxMtLzGZfEeh9d7OfVQPj3OxNFWvl-jn8">
+</script>
+    <script>
+        function init(){
+            var markerCurrentPosition;
+            var infowindow = new google.maps.InfoWindow({
+                content:"Hello World!"
+            });
+            var map =  new google.maps.Map(document.getElementById('map'), {zoom: 15, center: new google.maps.LatLng(37 , 37)});
+            navigator.geolocation.getCurrentPosition(function (position) {
+                var pos = {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude
+                };
+                map.setCenter(pos);
+                markerCurrentPosition = new google.maps.Marker({
+                    position: pos,
+                    map: map,
+                    title: 'Your Location',
+                    icon: '{{ asset('build/images/CurrentPosition.ico') }}'
+                });
+                google.maps.event.addListener(markerCurrentPosition, 'click', function() {
+                    infowindow.open(map,markerCurrentPosition);
+                });
+            });
+
+            google.maps.event.addListener(map, 'click', function(event) {
+                placeMarker(map, event.latLng);
+            });
+
+            function placeMarker(map, location) {
+                var marker = new google.maps.Marker({
+                    position: location,
+                    map: map,
+                    draggable: true,
+                    icon: '{{ asset('build/images/EventPositions.png') }}'
+                });
+                var infowindow = new google.maps.InfoWindow({
+                    content: 'Latitude: ' + location.lat() +
+                        '<br>Longitude: ' + location.lng()
+                });
+                infowindow.open(map,marker);
+            }
+        }
+        window.onload = init;
+    </script>
 {% endblock %}

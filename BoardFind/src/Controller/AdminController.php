@@ -11,6 +11,8 @@ use Symfony\Component\HttpFoundation\Session\Session;
 
 class AdminController extends AbstractController
 {
+
+
     /**
      * @Route("/BoardFind/Admin", name="AdminPanel")
      */

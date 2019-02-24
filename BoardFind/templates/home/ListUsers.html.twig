@@ -3,7 +3,7 @@
 {% block sidebar %}
     <a style="pointer-events: none; cursor: default;" id = "exception"> <img src="{{ asset('build/images/logo.png') }}" width="108" height="46" style="vertical-align: middle"> </a>
     <a href="/BoardFind/Home">Home</a>
-    <a href="/BoardFind">Events & People</a>
+    <a href="/BoardFind/EventsAndPeople">Events & People</a>
     <a href="/BoardFind/Trade">Trade</a>
     <a href="#chat">Chat</a>
     {% if app.session.has('id') == true %}
@@ -12,7 +12,7 @@
     <a href="/BoardFind/About">About us</a>
 {% endblock %}
 {% block active %}
-    <a class="active" href="/BoardFind/Admin"> Admin Pannel </a>
+    <a class="active" href="/BoardFind/Admin"> Admin Panel </a>
 {% endblock %}
 {% block pageContent %}
 

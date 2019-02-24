@@ -45,7 +45,7 @@ class UserController extends AbstractController
             $entityManager->flush();
             $flashbag = $this->get('session')->getFlashBag();
             $flashbag->add("SuccessfullRegister", "You successfully registered in our site!");
-            return $this->redirectToRoute('BoardFind');
+            return $this->redirectToRoute('Events');
         }
         return $this->render('home/RegisterForm.html.twig', array(
             'form' => $form->createView(),
@@ -60,7 +60,7 @@ class UserController extends AbstractController
         $this->get('session')->remove('id');
         $flashbag = $this->get('session')->getFlashBag();
         $flashbag->add("SuccessfullLoggout", "You successfully logout from our site!");
-        return $this->redirectToRoute('BoardFind');
+        return $this->redirectToRoute('Events');
     }
 
     /**
@@ -76,7 +76,7 @@ class UserController extends AbstractController
         $this->get('session')->remove('id');
         $flashbag = $this->get('session')->getFlashBag();
         $flashbag->add("SuccessfullLoggout", "You successfully removed your account from our site enjoy!");
-        return $this->redirectToRoute('BoardFind');
+        return $this->redirectToRoute('Events');
     }
 
     /**
@@ -100,7 +100,7 @@ class UserController extends AbstractController
             }
             $this->get('session')->set('id', $user->getId());
             $flashbag->add("SuccessfullLogin", "You successfully logged in our site!");
-            return $this->redirectToRoute('BoardFind');
+            return $this->redirectToRoute('Events');
         }
         return $this->render('home/LoginForm.html.twig', array(
             'form' => $form->createView(),

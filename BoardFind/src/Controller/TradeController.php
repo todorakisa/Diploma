@@ -26,7 +26,7 @@ class TradeController extends AbstractController
     }
 
     /**
-     * @Route("/BoardFind/Offer/{id}", name="Details")
+     * @Route("/BoardFind/Offer/{id}", name="OfferDetails")
      */
     public function seeingOffer($id)
     {
