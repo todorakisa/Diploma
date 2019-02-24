@@ -3,31 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="03555794-0f42-467e-97ab-c839b934e3ef" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/TradeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/TradeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Event.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Event.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/UserType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/UserType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/TradeOfferRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/TradeOfferRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Twig/AppExtension.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Twig/AppExtension.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/home/About.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home/About.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/home/Account.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home/Account.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/home/Admin.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home/Admin.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/home/EventsAndPeople.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home/EventsAndPeople.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/home/Home.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home/Home.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/home/ListOffers.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home/ListOffers.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/home/ListOffersAdmin.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home/ListOffersAdmin.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/home/ListUsers.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home/ListUsers.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/home/LoginForm.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home/LoginForm.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/home/OfferDetails.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home/OfferDetails.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/home/RegisterForm.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home/RegisterForm.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/home/RegisterOffer.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home/RegisterOffer.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/home/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/home/RegisterEvent.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home/RegisterEvent.html.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -49,7 +25,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Entity/Event.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-68">
+            <state relative-caret-position="612">
               <caret line="38" selection-start-line="38" selection-end-line="38" />
               <folding>
                 <element signature="e#30#62#0#PHP" expanded="true" />
@@ -61,7 +37,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/home/base.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="410">
+            <state relative-caret-position="2244">
               <caret line="132" column="34" selection-start-line="132" selection-start-column="34" selection-end-line="132" selection-end-column="34" />
             </state>
           </provider>
@@ -97,8 +73,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/home/RegisterEvent.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="22" column="63" selection-start-line="22" selection-start-column="63" selection-end-line="22" selection-end-column="63" />
+            <state relative-caret-position="376">
+              <caret line="75" column="40" selection-start-line="75" selection-start-column="40" selection-end-line="75" selection-end-column="40" />
             </state>
           </provider>
         </entry>
@@ -106,7 +82,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/assets/js/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
+            <state relative-caret-position="374">
               <caret line="27" column="37" selection-start-line="27" selection-start-column="37" selection-end-line="27" selection-end-column="37" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
@@ -127,7 +103,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controller/EventController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="918">
+            <state relative-caret-position="867">
               <caret line="57" selection-start-line="57" selection-end-line="57" />
               <folding>
                 <element signature="e#34#54#0#PHP" expanded="true" />
@@ -351,6 +327,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -373,36 +350,12 @@
               <item name="BoardFind" type="b2602c69:ProjectViewProjectNode" />
               <item name="BoardFind" type="462c0819:PsiDirectoryNode" />
               <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="images" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BoardFind" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BoardFind" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
               <item name="js" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="BoardFind" type="b2602c69:ProjectViewProjectNode" />
               <item name="BoardFind" type="462c0819:PsiDirectoryNode" />
               <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BoardFind" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BoardFind" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BoardFind" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BoardFind" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-              <item name="build" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BoardFind" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BoardFind" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-              <item name="build" type="462c0819:PsiDirectoryNode" />
-              <item name="images" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="BoardFind" type="b2602c69:ProjectViewProjectNode" />
@@ -460,7 +413,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -573,18 +525,20 @@
       <workItem from="1550851593245" duration="4740000" />
       <workItem from="1550945362542" duration="3650000" />
       <workItem from="1551003225995" duration="637000" />
-      <workItem from="1551007798655" duration="23701000" />
+      <workItem from="1551007798655" duration="24789000" />
+      <workItem from="1551051167344" duration="121000" />
+      <workItem from="1551051378111" duration="384000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="262913000" />
+    <option name="totallyTimeSpent" value="264506000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49858356" visible="true" weight="0.17324094" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49858356" visible="true" weight="0.17643923" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.24966443" />
       <window_info id="Favorites" order="2" sideWeight="0.50141644" side_tool="true" weight="0.31208053" />
       <window_info id="npm" order="3" side_tool="true" />
@@ -884,7 +838,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Entity/Event.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-68">
+        <state relative-caret-position="612">
           <caret line="38" selection-start-line="38" selection-end-line="38" />
           <folding>
             <element signature="e#30#62#0#PHP" expanded="true" />
@@ -892,12 +846,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/EventController.php">
+    <entry file="file://$PROJECT_DIR$/templates/home/base.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="918">
-          <caret line="57" selection-start-line="57" selection-end-line="57" />
+        <state relative-caret-position="2244">
+          <caret line="132" column="34" selection-start-line="132" selection-start-column="34" selection-end-line="132" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/home/Account.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="56" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/home/Admin.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="55" selection-start-line="14" selection-start-column="55" selection-end-line="14" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/home/EventsAndPeople.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="10" selection-start-line="11" selection-start-column="10" selection-end-line="11" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="27" column="37" selection-start-line="27" selection-start-column="37" selection-end-line="27" selection-end-column="37" />
           <folding>
-            <element signature="e#34#54#0#PHP" expanded="true" />
+            <element signature="n#!!doc" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -909,41 +891,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/home/Admin.html.twig">
+    <entry file="file://$PROJECT_DIR$/src/Controller/EventController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="55" selection-start-line="14" selection-start-column="55" selection-end-line="14" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/home/Account.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="56" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/home/base.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="410">
-          <caret line="132" column="34" selection-start-line="132" selection-start-column="34" selection-end-line="132" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/js/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="27" column="37" selection-start-line="27" selection-start-column="37" selection-end-line="27" selection-end-column="37" />
+        <state relative-caret-position="867">
+          <caret line="57" selection-start-line="57" selection-end-line="57" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#34#54#0#PHP" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/home/EventsAndPeople.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="10" selection-start-line="11" selection-start-column="10" selection-end-line="11" selection-end-column="10" />
         </state>
       </provider>
     </entry>
@@ -956,8 +910,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/home/RegisterEvent.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="63" selection-start-line="22" selection-start-column="63" selection-end-line="22" selection-end-column="63" />
+        <state relative-caret-position="376">
+          <caret line="75" column="40" selection-start-line="75" selection-start-column="40" selection-end-line="75" selection-end-column="40" />
         </state>
       </provider>
     </entry>

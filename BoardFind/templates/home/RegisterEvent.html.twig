@@ -71,12 +71,13 @@
                 });
             });
 
-            google.maps.event.addListener(map, 'click', function(event) {
+            var listenerHandle = google.maps.event.addListener(map, 'click', function(event) {
                 placeMarker(map, event.latLng);
+                listenerHandle.remove();
             });
 
             function placeMarker(map, location) {
-                var marker = new google.maps.Marker({
+                var marker2 = new google.maps.Marker({
                     position: location,
                     map: map,
                     draggable: true,
@@ -89,11 +90,12 @@
                 document.getElementById("event_latitude").value = location.lat();
                 document.getElementById("event_longitude").value = location.lng();
 
-                google.maps.event.addListener(marker, 'dragend', function (evt) {
-                    document.getElementById("event_latitude").value = location.lat();
-                    document.getElementById("event_longitude").value = location.lng();
+                google.maps.event.addListener(marker2, 'dragend', function (evt) {
+                    console.log('asd');
+                    document.getElementById("event_latitude").value = evt.latLng.lat();
+                    document.getElementById("event_longitude").value = evt.latLng.lng();
                 });
-                google.maps.event.addListener(marker, 'dragstart', function (evt) {
+                google.maps.event.addListener(marker2, 'dragstart', function (evt) {
                 });
                 // infowindow.open(map,marker);
             }
