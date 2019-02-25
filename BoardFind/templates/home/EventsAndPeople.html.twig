@@ -42,7 +42,7 @@
             var infowindow = new google.maps.InfoWindow({
                 content:"Hello World!"
             });
-            var map =  new google.maps.Map(document.getElementById('map'), {zoom: 15, center: new google.maps.LatLng(37 , 37)});
+            var map =  new google.maps.Map(document.getElementById('map'), {zoom: 17, center: new google.maps.LatLng(37 , 37)});
             navigator.geolocation.getCurrentPosition(function (position) {
                 var pos = {
                     lat: position.coords.latitude,
@@ -59,6 +59,16 @@
                     infowindow.open(map,markerCurrentPosition);
                 });
             });
+
+            {% for key,event in arrayOfEvents %}
+                {% if event.isdeleted == false %}
+                var marker = new google.maps.Marker({
+                    position: { lat: {{ event.latitude }}, lng: {{ event.longitude }}  },
+                    map: map,
+                    icon: '{{ asset('build/images/EventPositions.png') }}'
+                });
+                {% endif %}
+            {% endfor %}
 
             google.maps.event.addListener(map, 'click', function(event) {
                 placeMarker(map, event.latLng);

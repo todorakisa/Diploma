@@ -51,11 +51,6 @@ class Event
     private $placedescription;
 
     /**
-     * @ORM\Column(type="integer")
-     */
-    private $eventownerid;
-
-    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="events")
      */
     private $user;

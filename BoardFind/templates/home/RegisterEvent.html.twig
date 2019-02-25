@@ -20,16 +20,16 @@
             <span class="regreg"> REGISTER EVENT </span>
             <br><br>
         </p>
-        <p> Just click on the map to select your event location</p>
+        <div align="center">
+              <p class="fill"> Just click on the map to select your event location and drag it if you need</p>
+        </div>
         <div align="center">
             <div id="info" class ="fill">
                 {{ form_start(form) }}
                 {{ form_row(form.title, { 'attr': {'class': 'fill'} }) }}
                 <br>
                 {{ form_row(form.latitude, { 'attr': {'class': 'fill'} }) }}
-                <br>
                 {{ form_row(form.longitude, { 'attr': {'class': 'fill'} }) }}
-                <br>
                 {{ form_row(form.eventday, { 'attr': {'class': 'fill'} }) }}
                 <br>
                 {{ form_row(form.placedescription, { 'attr': {'class': 'fill'} }) }}
@@ -53,7 +53,7 @@
             var infowindow = new google.maps.InfoWindow({
                 content:"Hello World!"
             });
-            var map =  new google.maps.Map(document.getElementById('map'), {zoom: 15, center: new google.maps.LatLng(37 , 37)});
+            var map =  new google.maps.Map(document.getElementById('map'), {zoom: 17, center: new google.maps.LatLng(37 , 37)});
             navigator.geolocation.getCurrentPosition(function (position) {
                 var pos = {
                     lat: position.coords.latitude,
@@ -83,19 +83,16 @@
                     draggable: true,
                     icon: '{{ asset('build/images/EventPositions.png') }}'
                 });
-                var infowindow = new google.maps.InfoWindow({
-                    content: 'Latitude: ' + location.lat() +
-                        '<br>Longitude: ' + location.lng()
-                });
+                // var infowindow = new google.maps.InfoWindow({
+                //     content: 'Latitude: ' + location.lat() +
+                //         '<br>Longitude: ' + location.lng()
+                // });
                 document.getElementById("event_latitude").value = location.lat();
                 document.getElementById("event_longitude").value = location.lng();
 
                 google.maps.event.addListener(marker2, 'dragend', function (evt) {
-                    console.log('asd');
                     document.getElementById("event_latitude").value = evt.latLng.lat();
                     document.getElementById("event_longitude").value = evt.latLng.lng();
-                });
-                google.maps.event.addListener(marker2, 'dragstart', function (evt) {
                 });
                 // infowindow.open(map,marker);
             }

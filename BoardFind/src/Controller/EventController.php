@@ -30,9 +30,9 @@ class EventController extends AbstractController
             $session = $this->get('session');
             $userId = $session->get("id");
             $user = $this->getDoctrine()
-                ->getRepository(User::class)->find($userId);
-            $Event->setEventOwnerId($user->getId());
+                ->getRepository(User::class)->find($userId);;
             $Event->setIsDeleted(false);
+            $Event->setUser($user);
 
             $entityManager->persist($Event);
             $entityManager->flush();

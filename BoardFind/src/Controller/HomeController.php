@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Event;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -15,7 +16,11 @@ class HomeController extends AbstractController
      */
     public function eventsAndPeople()
     {
-        return $this->render('Home/EventsAndPeople.html.twig');
+        $Events = $this->getDoctrine()
+            ->getRepository(Event::class)->findAll();
+        return $this->render('Home/EventsAndPeople.html.twig', array(
+            "arrayOfEvents" => $Events,
+        ));
     }
 
     /**
