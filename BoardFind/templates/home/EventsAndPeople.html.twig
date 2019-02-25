@@ -40,7 +40,7 @@
         function init(){
             var markerCurrentPosition;
             var infowindow = new google.maps.InfoWindow({
-                content:"Hello World!"
+                content:"You are here!"
             });
             var map =  new google.maps.Map(document.getElementById('map'), {zoom: 17, center: new google.maps.LatLng(37 , 37)});
             navigator.geolocation.getCurrentPosition(function (position) {
@@ -62,31 +62,24 @@
 
             {% for key,event in arrayOfEvents %}
                 {% if event.isdeleted == false %}
+            ;(_=>{
                 var marker = new google.maps.Marker({
                     position: { lat: {{ event.latitude }}, lng: {{ event.longitude }}  },
                     map: map,
+                    title: '{{ event.title }}',
                     icon: '{{ asset('build/images/EventPositions.png') }}'
                 });
+                var id = {{ event.id }};
+                var infowindow = new google.maps.InfoWindow({
+                    content: 'Title:' + '{{ event.title }}' +
+                            '<br>Date:' + '{{ event.eventday|date("m/d/Y") }}' +
+                            '<br>For more details click <a href = "/BoardFind/Event/{{ event.id }}">here</a>'
+                });
+                google.maps.event.addListener(marker, 'click', function() {
+                    infowindow.open(map,marker);
+                });})()
                 {% endif %}
             {% endfor %}
-
-            google.maps.event.addListener(map, 'click', function(event) {
-                placeMarker(map, event.latLng);
-            });
-
-            function placeMarker(map, location) {
-                var marker = new google.maps.Marker({
-                    position: location,
-                    map: map,
-                    draggable: true,
-                    icon: '{{ asset('build/images/EventPositions.png') }}'
-                });
-                var infowindow = new google.maps.InfoWindow({
-                    content: 'Latitude: ' + location.lat() +
-                        '<br>Longitude: ' + location.lng()
-                });
-                infowindow.open(map,marker);
-            }
         }
         window.onload = init;
     </script>
