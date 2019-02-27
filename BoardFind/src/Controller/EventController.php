@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Doctrine\Common\Collections\ArrayCollection;
 
 class EventController extends AbstractController
 {
@@ -63,8 +64,35 @@ class EventController extends AbstractController
     {
         $event = $this->getDoctrine()
             ->getRepository(Event::class)->find($id);
+        $arrayUsernames = new ArrayCollection();
+        $arrayOfParticipants = $event->getParticipants();
+        foreach($arrayOfParticipants->getIterator() as $i => $item) {
+            $arrayUsernames->add($item->getUsername());
+        }
         return $this->render('Home/EventDetails.html.twig', array(
             "Event" => $event,
+            "Owner" => $event->getUser()->getUsername(),
+            "OwnerEmail" => $event->getUser()->getEmail(),
+            "arrayOfUsernames" => $arrayUsernames,
         ));
+    }
+
+    /**
+     * @Route("/BoardFind/Event/Participate/{id}", name="addParticipant")
+     */
+    public function addingParticipantsToEvent($id)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $event = $entityManager->getRepository("App:Event")
+            ->find($id);
+        $userId = $this->get('session')->get('id');
+        $user = $entityManager->getRepository("App:User")
+            ->find($userId);
+        $event->addParticipant($user);
+        $user->addParticipationOnEvent($event);
+        $entityManager->flush();
+        $flashbag = $this->get('session')->getFlashBag();
+        $flashbag->add("SuccessfullRegistrationForEvent", "You successfully joined in this event, enjoy!");
+        return $this->redirect('/BoardFind/Event/' . $id);
     }
 }

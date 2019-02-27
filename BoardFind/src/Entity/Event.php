@@ -2,9 +2,11 @@
 
 namespace App\Entity;
 
+use Appp\Entity\User;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\EventRepository")
@@ -35,7 +37,7 @@ class Event
      * @Assert\Type("\DateTime")
      * @Assert\NotBlank()
      */
-    protected $eventDay;
+    protected $event_day;
 
     /**
      * @ORM\Column(type="string", length=100)
@@ -50,15 +52,42 @@ class Event
      */
     private $placedescription;
 
+
     /**
+     * Many events has one owner. This is the inverse side.
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="events")
      */
-    private $user;
+    private $owner;
+
+    /**
+     * Many Events have Many Users.
+     * @ORM\ManyToMany(targetEntity="App\Entity\User", inversedBy="participant_events")
+     */
+    private $event_participants;
 
     /**
      * @ORM\Column(type="boolean")
      */
     private $isdeleted;
+
+    public function __construct() {
+        $this->event_participants = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    public function getParticipants()
+    {
+        return $this->event_participants;
+    }
+
+    public function addParticipant($user)
+    {
+        return $this->event_participants->add($user);
+    }
+
+    public function removeParticipant($user)
+    {
+        return $this->event_participants->remove($user);
+    }
 
     public function getId(): ?int
     {
@@ -77,12 +106,12 @@ class Event
 
     public function setEventday($day)
     {
-        $this->eventDay = $day;
+        $this->event_day = $day;
     }
 
     public function getEventday()
     {
-        return $this->eventDay;
+        return $this->event_day;
     }
 
     public function getLatitude()
@@ -135,14 +164,14 @@ class Event
         $this->isdeleted = $bool;
     }
 
-    public function getUser() : ?User
+    public function getUser()
     {
-        return $this->user;
+        return $this->owner;
     }
 
-    public function setUser(?User $usert)
+    public function setUser($usert)
     {
-        $this->user = $usert;
+        $this->owner = $usert;
     }
 
 }

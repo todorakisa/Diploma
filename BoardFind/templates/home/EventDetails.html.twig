@@ -1,10 +1,84 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<p>{{ Event.eventday|date("m/d/Y") }} xx {{ Event.title }}</p>
-</body>
-</html>
+{% extends '/home/base.html.twig' %}
+{% block title %}EventDetails{% endblock %}
+{% block sidebar %}
+    <a style="pointer-events: none; cursor: default;" id = "exception"> <img src="{{ asset('build/images/logo.png') }}" width="108" height="46" style="vertical-align: middle"> </a>
+    <a href="/BoardFind/Home">Home</a>
+    <a class="active" href="/BoardFind/EventsAndPeople">Events & People</a>
+    <a href="/BoardFind/Trade">Trade</a>
+    <a href="#chat">Chat</a>
+    {% if app.session.has('id') == true %}
+        <a href="/BoardFind/Account">Account</a>
+    {% endif %}
+    <a href="/BoardFind/About">About us</a>
+{% endblock %}
+{% block pageContent %}
+    <div class = "divide">
+
+        <div align="center">
+            <div id="map"></div>
+        </div>
+
+        <br><br>
+
+        <div class="transbox">
+            <p align="center" class ="specialText">
+                <span class="blue"> Information fot the event </span>
+            </p>
+            <p id="info" class ="specialText">
+                Name of the Event: &nbsp {{ Event.title }}
+                <br><br>
+                Date of the event: &nbsp {{ Event.eventday|date("m/d/Y") }}
+                <br><br>
+                Owner of the event: &nbsp {{ Owner }}
+                <br><br>
+                Email of the owner of the event: &nbsp {{ OwnerEmail }}
+                <br><br>
+                Participants in the Event:
+                {% if arrayOfUsernames != null %}
+                    {% for user in arrayOfUsernames %}
+                        {{ user }}
+                    {% endfor %}
+                {% endif %}
+                <br><br>
+                Description of the event: &nbsp {{ Event.placedescription }}
+            </p>
+        </div>
+    </div>
+    <br><br>
+
+    {% if arrayOfUsernames.contains(userIdInformation(app.session.get('id'))) %}
+    <div align = "center">
+        <button class = "create2 button8"><b>Yoy are already participating in the Event</b></button>
+    </div>
+    {% elseif app.session.has('id') == true %}
+    <div align = "center">
+        <a href = "/BoardFind/Event/Participate/{{ Event.id }}"><button class = "create2 button8"><b>Participate in the Event</b></button></a>
+    </div>
+    {% endif %}
+    <br><br>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxMtLzGZfEeh9d7OfVQPj3OxNFWvl-jn8">
+    </script>
+    <script>
+        function init(){
+            var markerEventPosition = {
+                lat: {{ Event.latitude }},
+                lng: {{ Event.longitude }}
+            };;
+            var infowindow = new google.maps.InfoWindow({
+                content:"The Event is Here!"
+            });
+            var map =  new google.maps.Map(document.getElementById('map'), {zoom: 17, center: markerEventPosition });
+            var marker = new google.maps.Marker({
+                position: markerEventPosition,
+                map: map,
+                title: '{{ Event.title }}',
+                icon: '{{ asset('build/images/EventPositions.png') }}'
+            });
+            google.maps.event.addListener(marker, 'click', function() {
+                infowindow.open(map,marker);
+            });
+        }
+        window.onload = init;
+    </script>
+{% endblock %}

@@ -2,9 +2,7 @@
 
 namespace App\Entity;
 
-use App\Repository\EventRepository;
 use Doctrine\ORM\Mapping as ORM;
-use phpDocumentor\Reflection\Types\Boolean;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -68,9 +66,16 @@ class User
     private $tradeoffers;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Event", mappedBy="user")
+     * One User has many events.
+     * @ORM\OneToMany(targetEntity="App\Entity\Event", mappedBy="owner")
      */
     private $events;
+
+    /**
+     * Many Users have Many Events.
+     * @ORM\ManyToMany(targetEntity="App\Entity\Event", mappedBy="event_participants")
+     */
+    private $participant_events;
 
     /**
      * @ORM\Column(type="boolean")
@@ -87,10 +92,28 @@ class User
         return $this->id;
     }
 
-    /**
-     * @return Collection|Event[]
-     */
-    public function getEvents(): ?ArrayCollection
+    public function __construct()
+    {
+        $this->tradeoffers = new ArrayCollection();
+        $this->participant_events = new ArrayCollection();
+    }
+
+    public function getParticipationOnEvents()
+    {
+        return $this->participant_events;
+    }
+
+    public function addParticipationOnEvent(?Event $event)
+    {
+        return $this->participant_events->add($event);
+    }
+
+    public function removeParticipationOnEvent(?Event $event)
+    {
+        return $this->participant_events->remove($event);
+    }
+
+    public function getEvents()
     {
         return $this->events;
     }
@@ -139,15 +162,7 @@ class User
         return $this;
     }
 
-    public function __construct()
-    {
-        $this->tradeoffers = new ArrayCollection();
-    }
-
-    /**
-     * @return Collection|TradeOffer[]
-     */
-    public function getProducts(): ?ArrayCollection
+    public function getProducts()
     {
         return $this->tradeoffers;
     }
